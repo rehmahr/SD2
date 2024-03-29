@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 
+//testing github
 class MainActivity : ComponentActivity() {
 
     private lateinit var reg_button: Button
