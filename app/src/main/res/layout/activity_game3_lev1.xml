@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffcbd9"
+    tools:context=".Game3Lev1"
+    tools:layout_editor_absoluteX="-322dp"
+    tools:layout_editor_absoluteY="-195dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView8"
+        android:layout_width="85dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/rounded_corner_navigation_view"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_corner_navigation_view">
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/feedback"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
+
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/report"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
+
+            <ImageButton
+                android:id="@+id/imageButton10"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="70dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/help"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="962dp"
+        android:layout_height="614dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="134dp"
+        app:cardBackgroundColor="#e5e5e5"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView8"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="682dp">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginBottom="88dp"
+                android:backgroundTint="#DF7F99"
+                android:text="Next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginEnd="105dp"
+                android:layout_marginBottom="88dp"
+                android:backgroundTint="#DF7F99"
+                android:text="Previous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/proceedButton"
+                android:layout_width="130dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="235dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginBottom="297dp"
+                android:backgroundTint="#DF7F99"
+                android:text="Proceed to Test"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/mainHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image_removebg_preview"
+                tools:layout_editor_absoluteX="335dp"
+                tools:layout_editor_absoluteY="82dp" />
+
+            <ImageView
+                android:id="@+id/surprisedFace"
+                android:layout_width="146dp"
+                android:layout_height="135dp"
+                android:src="@drawable/image_removebg_preview__3_"
+                tools:layout_editor_absoluteX="625dp"
+                tools:layout_editor_absoluteY="359dp" />
+
+            <ImageView
+                android:id="@+id/happyFace"
+                android:layout_width="138dp"
+                android:layout_height="137dp"
+                android:src="@drawable/image_removebg_preview__2_"
+                tools:layout_editor_absoluteX="398dp"
+                tools:layout_editor_absoluteY="359dp" />
+
+            <TextView
+                android:id="@+id/emotionWord"
+                android:layout_width="85dp"
+                android:layout_height="68dp"
+                android:fontFamily="@font/bungee_inline"
+                android:text="SAD"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="433dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <ImageView
+                android:id="@+id/sadFace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image_removebg_preview__1_"
+                tools:layout_editor_absoluteX="181dp"
+                tools:layout_editor_absoluteY="359dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="673dp"
+        android:layout_height="116dp"
+        android:fontFamily="@font/bungee"
+        android:text="MATCH THE EMOTION"
+        android:textSize="60sp"
+        tools:layout_editor_absoluteX="304dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
