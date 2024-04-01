@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffcbd9"
-    tools:context=".Game1Lev1Test"
+    tools:context=".Game1Lev2Test"
     tools:layout_editor_absoluteX="-322dp"
     tools:layout_editor_absoluteY="-195dp">
 
@@ -122,20 +122,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="164dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="318dp"
-                android:layout_marginTop="81dp"
-                android:layout_marginEnd="318dp"
-                android:text="proceed to next level"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -148,7 +135,6 @@
         android:layout_marginTop="166dp"
         android:layout_marginEnd="240dp"
         android:layout_marginBottom="134dp"
-        android:visibility="visible"
         app:cardBackgroundColor="#e5e5e5"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
@@ -181,8 +167,8 @@
                         android:id="@+id/imageView2"
                         android:layout_width="400dp"
                         android:layout_height="400dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/happy"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/human_happy"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -191,6 +177,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
+
 
 
             <Button

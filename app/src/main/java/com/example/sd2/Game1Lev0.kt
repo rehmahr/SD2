@@ -2,6 +2,7 @@ package com.example.sd2
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
@@ -10,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class Game1Lev0 : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,6 +27,7 @@ class Game1Lev0 : ComponentActivity() {
         val imageButton3 = findViewById<ImageButton>(R.id.imageButton3)
         val imageButton4 = findViewById<ImageButton>(R.id.imageButton4)
         val imageButton5 = findViewById<ImageButton>(R.id.imageButton5)
+        val nextButton = findViewById<Button>(R.id.button9)
 
         imageButton1.setOnClickListener {
             findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.angry)
@@ -45,6 +48,13 @@ class Game1Lev0 : ComponentActivity() {
         imageButton5.setOnClickListener {
 
             val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+
+        }
+
+        nextButton.setOnClickListener {
+
+            val intent = Intent(this, Game1Lev1::class.java)
             startActivity(intent)
 
         }

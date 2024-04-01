@@ -14,12 +14,12 @@ import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
 import java.net.URL
 
-class Game1Lev1Test : AppCompatActivity() {
+class Game1Lev2Test : AppCompatActivity() {
     private val images = listOf(
-        R.drawable.happy,
-        R.drawable.sad,
-        R.drawable.angry,
-        R.drawable.surprised
+        R.drawable.human_happy,
+        R.drawable.human_sad,
+        R.drawable.human_angry,
+        R.drawable.human_surprised
     ).shuffled()
 
     private lateinit var gamePanel: View
@@ -29,8 +29,6 @@ class Game1Lev1Test : AppCompatActivity() {
     private lateinit var sadButton: Button
     private lateinit var angryButton: Button
     private lateinit var surprisedButton: Button
-    private lateinit var proceedButton: Button
-
 
     private var currentIndex = -1
     private var mistakes = 0
@@ -38,7 +36,7 @@ class Game1Lev1Test : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_game1_lev1_test)
+        setContentView(R.layout.activity_game1_lev2_test)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -53,19 +51,15 @@ class Game1Lev1Test : AppCompatActivity() {
         sadButton = findViewById(R.id.sadButt)
         angryButton = findViewById(R.id.angryButt)
         surprisedButton = findViewById(R.id.surprisedButt)
-        proceedButton = findViewById(R.id.button)
 
         // Start game
         nextImage()
 
         // Set click listeners
-        happyButton.setOnClickListener { checkAnswer("happy") }
-        sadButton.setOnClickListener { checkAnswer("sad") }
-        angryButton.setOnClickListener { checkAnswer("angry") }
-        surprisedButton.setOnClickListener { checkAnswer("surprised") }
-        proceedButton.setOnClickListener {
-            goToNextActivity(this, Game1Lev2::class.java)
-        }
+        happyButton.setOnClickListener { checkAnswer("human_happy") }
+        sadButton.setOnClickListener { checkAnswer("human_sad") }
+        angryButton.setOnClickListener { checkAnswer("human_angry") }
+        surprisedButton.setOnClickListener { checkAnswer("human_surprised") }
     }
 
     private fun nextImage() {
