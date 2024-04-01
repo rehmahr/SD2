@@ -1,7 +1,10 @@
 package com.example.sd2
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -10,10 +13,31 @@ import com.github.mikephil.charting.data.PieEntry
 
 
 class Dashboard : ComponentActivity() {
+
+    private lateinit var game1_butt: Button
+    private lateinit var game2_butt: Button
+    private lateinit var game3_butt: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_dashboard)
+
+        game1_butt = findViewById(R.id.button6)
+        game2_butt = findViewById(R.id.button7)
+        game3_butt = findViewById(R.id.button8)
+
+        game1_butt.setOnClickListener {
+            goToNextActivity(this, Game1Lev0::class.java)
+        }
+
+        game2_butt.setOnClickListener {
+            goToNextActivity(this, Game2Lev1::class.java)
+        }
+
+        game3_butt.setOnClickListener {
+            goToNextActivity(this, Game3Lev1::class.java)
+        }
+
         val pieChart1: PieChart = findViewById(R.id.pieChart1)
         val pieChart2: PieChart = findViewById(R.id.pieChart2)
         val pieChart3: PieChart = findViewById(R.id.pieChart3)

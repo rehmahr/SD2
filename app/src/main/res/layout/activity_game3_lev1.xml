@@ -149,7 +149,7 @@
                 android:id="@+id/mainHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/image_removebg_preview"
+                android:src="@drawable/happy"
                 tools:layout_editor_absoluteX="335dp"
                 tools:layout_editor_absoluteY="82dp" />
 
@@ -157,7 +157,7 @@
                 android:id="@+id/surprisedFace"
                 android:layout_width="146dp"
                 android:layout_height="135dp"
-                android:src="@drawable/image_removebg_preview__3_"
+                android:src="@drawable/surprised"
                 tools:layout_editor_absoluteX="625dp"
                 tools:layout_editor_absoluteY="359dp" />
 
@@ -165,7 +165,7 @@
                 android:id="@+id/happyFace"
                 android:layout_width="138dp"
                 android:layout_height="137dp"
-                android:src="@drawable/image_removebg_preview__2_"
+                android:src="@drawable/happy"
                 tools:layout_editor_absoluteX="398dp"
                 tools:layout_editor_absoluteY="359dp" />
 
@@ -184,7 +184,7 @@
                 android:id="@+id/sadFace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/image_removebg_preview__1_"
+                android:src="@drawable/sad"
                 tools:layout_editor_absoluteX="181dp"
                 tools:layout_editor_absoluteY="359dp" />
 
@@ -196,7 +196,7 @@
         android:id="@+id/header"
         android:layout_width="673dp"
         android:layout_height="116dp"
-        android:fontFamily="@font/bungee"
+        android:fontFamily="@font/bungee_inline"
         android:text="MATCH THE EMOTION"
         android:textSize="60sp"
         tools:layout_editor_absoluteX="304dp"

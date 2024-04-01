@@ -1,6 +1,8 @@
 package com.example.sd2
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,15 @@ class Game3Lev1 : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val imageButton5 = findViewById<ImageButton>(R.id.imageButton5)
+
+        imageButton5.setOnClickListener {
+
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+
         }
     }
 }
