@@ -9,6 +9,8 @@ import androidx.activity.ComponentActivity
 //testing github
 // testing farah
 //summmmmmm testing
+
+// test again
 class MainActivity : ComponentActivity() {
 
     private lateinit var reg_button: Button
