@@ -208,13 +208,14 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="253dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="251dp"
         android:layout_marginBottom="10dp"
         android:elegantTextHeight="true"
         android:fontFamily="@font/bungee_inline"
-        android:outlineAmbientShadowColor="@color/beige"
 
+        android:outlineAmbientShadowColor="@color/beige"
         android:shadowColor="@color/pink"
         android:shadowDx="-20"
         android:shadowRadius="1"
@@ -226,6 +227,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
