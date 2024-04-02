@@ -88,6 +88,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="962dp"
         android:layout_height="614dp"
         android:layout_marginStart="154dp"
@@ -145,61 +146,86 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/mainHead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/happy"
-                tools:layout_editor_absoluteX="335dp"
-                tools:layout_editor_absoluteY="82dp" />
-
-            <ImageView
-                android:id="@+id/surprisedFace"
-                android:layout_width="146dp"
-                android:layout_height="135dp"
-                android:src="@drawable/surprised"
-                tools:layout_editor_absoluteX="625dp"
-                tools:layout_editor_absoluteY="359dp" />
-
-            <ImageView
-                android:id="@+id/happyFace"
-                android:layout_width="138dp"
-                android:layout_height="137dp"
-                android:src="@drawable/happy"
-                tools:layout_editor_absoluteX="398dp"
-                tools:layout_editor_absoluteY="359dp" />
-
             <TextView
                 android:id="@+id/emotionWord"
                 android:layout_width="85dp"
                 android:layout_height="68dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="436dp"
                 android:fontFamily="@font/bungee_inline"
                 android:text="SAD"
                 android:textSize="34sp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="433dp"
-                tools:layout_editor_absoluteY="1dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/sadFace"
+                android:id="@+id/matchSad"
+                android:layout_width="142dp"
+                android:layout_height="144dp"
+                android:layout_marginStart="157dp"
+                android:layout_marginTop="350dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/image_removebg_preview__1_" />
+
+            <ImageView
+                android:id="@+id/matchHappy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/sad"
-                tools:layout_editor_absoluteX="181dp"
-                tools:layout_editor_absoluteY="359dp" />
+                android:layout_marginStart="114dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/matchSad"
+                app:layout_constraintTop_toBottomOf="@+id/matchEmptyFace"
+                app:srcCompat="@drawable/image_removebg_preview__2_" />
+
+            <ImageView
+                android:id="@+id/matchSurprised"
+                android:layout_width="149dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="350dp"
+                android:layout_marginEnd="151dp"
+                android:layout_marginBottom="34dp"
+                app:layout_constraintBottom_toTopOf="@+id/button5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/image_removebg_preview__3_" />
+
+            <ImageView
+                android:id="@+id/matchEmptyFace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="340dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emotionWord"
+                app:srcCompat="@drawable/image_removebg_preview" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/header"
-        android:layout_width="673dp"
-        android:layout_height="116dp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginBottom="10dp"
+        android:elegantTextHeight="true"
         android:fontFamily="@font/bungee_inline"
+        android:outlineAmbientShadowColor="@color/beige"
+
+        android:shadowColor="@color/pink"
+        android:shadowDx="-20"
+        android:shadowRadius="1"
         android:text="MATCH THE EMOTION"
-        android:textSize="60sp"
-        tools:layout_editor_absoluteX="304dp"
-        tools:layout_editor_absoluteY="-2dp" />
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        android:textSize="70sp"
+        android:typeface="monospace"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
