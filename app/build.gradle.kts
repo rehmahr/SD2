@@ -51,6 +51,7 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(libs.androidx.core.ktx)
