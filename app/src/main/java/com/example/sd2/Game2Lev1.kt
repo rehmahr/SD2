@@ -16,7 +16,7 @@ class Game2Lev1 : AppCompatActivity() {
 
         videoView = findViewById(R.id.videoView)
 
-        val offlineUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.bomi}")
+        val offlineUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.happy_lev1}")
         videoView.setVideoURI(offlineUri)
 
         setupMediaControls()
