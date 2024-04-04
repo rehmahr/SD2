@@ -10,6 +10,19 @@
     tools:layout_editor_absoluteX="-322dp"
     tools:layout_editor_absoluteY="-195dp">
 
+    <Button
+        android:id="@+id/scaredans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E4E4E4"
+        android:backgroundTint="#E4E4E4"
+        android:drawableTint="#FEFEFE"
+        android:text="next level"
+        android:textColor="#000000"
+        app:iconTint="#FEFEFE"
+        tools:layout_editor_absoluteX="1132dp"
+        tools:layout_editor_absoluteY="411dp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
         android:layout_width="85dp"

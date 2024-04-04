@@ -17,6 +17,9 @@
         android:theme="@style/Theme.SD2"
         tools:targetApi="31">
         <activity
+            android:name=".Game3Lev2"
+            android:exported="true" />
+        <activity
             android:name=".Game2Lev32"
             android:exported="true">
             <intent-filter>
@@ -162,6 +165,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

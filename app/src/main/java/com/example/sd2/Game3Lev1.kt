@@ -1,10 +1,12 @@
 package com.example.sd2
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +17,7 @@ data class DraggableEmotion(
     val emotionDrawableId: Int,
     val emotionWord: String
 )
+
 class Game3Lev1 : AppCompatActivity() {
     private lateinit var emotionWordTextView: TextView
     private lateinit var faceGap: ImageView
@@ -32,6 +35,14 @@ class Game3Lev1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game3_lev1)
+
+        val nextButton = findViewById<Button>(R.id.scaredans)
+        nextButton.setOnClickListener {
+
+            val intent = Intent(this, Game3Lev2::class.java)
+            startActivity(intent)
+
+        }
 
         emotionWordTextView = findViewById(R.id.emotionWord)
         faceGap = findViewById(R.id.faceGap)
@@ -106,7 +117,6 @@ class Game3Lev1 : AppCompatActivity() {
         draggableViews.forEach { viewId ->
             findViewById<ImageView>(viewId).visibility = View.VISIBLE
         }
+
     }
-
-
 }

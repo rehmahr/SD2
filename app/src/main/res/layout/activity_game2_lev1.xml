@@ -98,7 +98,7 @@
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity"
-        tools:layout_editor_absoluteX="-45dp">
+        tools:layout_editor_absoluteX="0dp">
 
         <View
             android:id="@+id/view"
