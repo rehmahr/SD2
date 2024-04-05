@@ -1,5 +1,6 @@
 package com.example.sd2
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -10,7 +11,6 @@ import android.widget.ViewFlipper
 import androidx.activity.ComponentActivity
 
 class Game1Lev1 : ComponentActivity() {
-
     private lateinit var viewFlipper: ViewFlipper
     private lateinit var nextButton: Button
     private lateinit var prevButton: Button
@@ -21,6 +21,8 @@ class Game1Lev1 : ComponentActivity() {
     private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised")
     private var currentIndex = 0
     private var emotionsVisited = 0
+
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +48,10 @@ class Game1Lev1 : ComponentActivity() {
 
         nextButton.setOnClickListener {
             showNextEmotion()
-            checkEmotionIndex()
         }
 
         prevButton.setOnClickListener {
             showPreviousEmotion()
-            checkEmotionIndex()
         }
 
         proceedButton.setOnClickListener {
@@ -82,16 +82,33 @@ class Game1Lev1 : ComponentActivity() {
         val drawableId = resources.getIdentifier(emotion.toLowerCase(), "drawable", packageName)
         imageView.setImageResource(drawableId)
         textView.text = emotion
+
+        // Play corresponding audio
+        playAudio(emotion)
+
         // Increment emotionsVisited
         emotionsVisited++
     }
 
+    private fun playAudio(emotion: String) {
+        mediaPlayer?.stop() // Stop previously playing audio
+        mediaPlayer?.release() // Release previous MediaPlayer instance
+        val audioResourceId = resources.getIdentifier(emotion.toLowerCase() + "_audio", "raw", packageName)
+        mediaPlayer = MediaPlayer.create(this, audioResourceId)
+        mediaPlayer?.start()
+    }
+
     private fun checkEmotionIndex() {
         if (emotionsVisited >= emotions.size) {
-
             proceedButton.visibility = View.VISIBLE
         } else {
             proceedButton.visibility = View.GONE
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
     }
 }

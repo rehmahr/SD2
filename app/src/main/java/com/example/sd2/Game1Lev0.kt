@@ -1,6 +1,7 @@
 package com.example.sd2
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -9,7 +10,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 class Game1Lev0 : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,32 +31,41 @@ class Game1Lev0 : ComponentActivity() {
 
         imageButton1.setOnClickListener {
             findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.angry)
+            playSound(R.raw.angry_audio)
         }
 
         imageButton2.setOnClickListener {
             findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.happy)
+            playSound(R.raw.happy_audio)
         }
 
         imageButton3.setOnClickListener {
             findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.sad)
+            playSound(R.raw.sad_audio)
         }
 
         imageButton4.setOnClickListener {
             findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.surprised)
+            playSound(R.raw.surprised_audio)
         }
 
         imageButton5.setOnClickListener {
-
             val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
-
         }
 
         nextButton.setOnClickListener {
-
             val intent = Intent(this, Game1Lev1::class.java)
             startActivity(intent)
+        }
+    }
 
+    private fun playSound(audioResource: Int) {
+        val mediaPlayer = MediaPlayer.create(this, audioResource)
+        mediaPlayer.start()
+        mediaPlayer.setOnCompletionListener {
+            // Release MediaPlayer when playback is completed
+            it.release()
         }
     }
 }
