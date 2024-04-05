@@ -161,6 +161,7 @@
                 android:layout_marginStart="129dp"
                 android:layout_marginTop="71dp"
                 android:elevation="10dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/front_side" />
@@ -172,6 +173,7 @@
                 android:layout_marginStart="51dp"
                 android:layout_marginTop="71dp"
                 android:elevation="10dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintStart_toEndOf="@+id/front_side1"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/front_side" />
@@ -183,6 +185,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="71dp"
                 android:elevation="10dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintStart_toEndOf="@+id/front_side2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/front_side" />
@@ -194,6 +197,7 @@
                 android:layout_marginTop="71dp"
                 android:layout_marginEnd="144dp"
                 android:elevation="20dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/front_side" />
@@ -205,6 +209,7 @@
                 android:layout_marginStart="129dp"
                 android:layout_marginBottom="71dp"
                 android:elevation="20dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/front_side" />
@@ -216,6 +221,7 @@
                 android:layout_marginStart="51dp"
                 android:layout_marginBottom="71dp"
                 android:elevation="20dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/front_side5"
                 app:srcCompat="@drawable/front_side" />
@@ -227,6 +233,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginBottom="71dp"
                 android:elevation="20dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/front_side6"
                 app:srcCompat="@drawable/front_side" />
@@ -238,6 +245,7 @@
                 android:layout_marginEnd="144dp"
                 android:layout_marginBottom="68dp"
                 android:elevation="10dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/front_side" />
