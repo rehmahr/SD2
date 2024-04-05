@@ -1,6 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BGC"
@@ -21,9 +22,9 @@
         android:text="Level 1"
         android:textColor="@color/purple"
         android:textSize="40sp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/Menubar"
@@ -51,8 +52,8 @@
             android:scaleType="fitCenter"
             android:translationX="8dp"
             android:translationY="50dp"
-            app:srcCompat="@drawable/home_button"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:srcCompat="@drawable/home_button" />
 
 
         <ImageButton
@@ -64,8 +65,8 @@
             android:scaleType="fitCenter"
             android:translationX="8dp"
             android:translationY="150dp"
-            app:srcCompat="@drawable/report"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:srcCompat="@drawable/report" />
 
         <ImageButton
             android:id="@+id/feedback"
@@ -76,8 +77,8 @@
             android:scaleType="fitCenter"
             android:translationX="8dp"
             android:translationY="250dp"
-            app:srcCompat="@drawable/icons8_feedback_100"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:srcCompat="@drawable/icons8_feedback_100" />
 
         <ImageButton
             android:id="@+id/help"
@@ -88,8 +89,8 @@
             android:scaleType="fitCenter"
             android:translationX="8dp"
             android:translationY="350dp"
-            app:srcCompat="@drawable/help"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            app:srcCompat="@drawable/help" />
     </com.google.android.material.navigation.NavigationView>
 
     <FrameLayout
