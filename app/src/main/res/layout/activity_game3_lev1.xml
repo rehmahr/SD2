@@ -14,7 +14,7 @@
         android:id="@+id/scaredans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#E4E4E4"
+        android:background="#DAC8C8"
         android:backgroundTint="#E4E4E4"
         android:drawableTint="#FEFEFE"
         android:text="next level"

@@ -5,10 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffcbd9"
+    android:background="#86C4CC"
+    android:foregroundTint="#9E2828"
     tools:context=".Game1Lev0"
     tools:layout_editor_absoluteX="-322dp"
     tools:layout_editor_absoluteY="-195dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="265dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="604dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/bungee_shade"
+        android:shadowColor="#72A0A6"
+        android:shadowDx="-20"
+        android:shadowDy="-2"
+        android:shadowRadius="20"
+        android:text="Level 1"
+        android:textColor="@color/purple"
+        android:textSize="50sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
@@ -93,7 +112,7 @@
         android:layout_marginStart="198dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="196dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="90dp"
         app:cardBackgroundColor="#e5e5e5"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
@@ -104,7 +123,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:foregroundTint="#00BA2222">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView10"
@@ -218,8 +238,13 @@
         android:background="#E91E63"
         android:backgroundTint="#E91E63"
         android:text="next level"
+<<<<<<< Updated upstream
         app:iconTint="#E91E63"
         tools:layout_editor_absoluteX="1132dp"
         tools:layout_editor_absoluteY="411dp" />
+=======
+        tools:layout_editor_absoluteX="1160dp"
+        tools:layout_editor_absoluteY="449dp" />
+>>>>>>> Stashed changes
 
 </androidx.constraintlayout.widget.ConstraintLayout>
