@@ -31,7 +31,7 @@ class Registration : ComponentActivity() {
         editTextName = findViewById(R.id.editTextName)
         editTextAge = findViewById(R.id.editTextAge)
         editTextPassword = findViewById(R.id.editTextPassword)
-        buttonRegister = findViewById(R.id.buttonRegister)
+        buttonRegister = findViewById(R.id.buttonNext)
         requestQueue = Volley.newRequestQueue(this)
 
         ArrayAdapter.createFromResource(
