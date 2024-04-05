@@ -11,14 +11,23 @@
     tools:layout_editor_absoluteX="-322dp"
     tools:layout_editor_absoluteY="-195dp">
 
+    <ImageView
+        android:id="@+id/cloud1"
+        android:layout_width="486dp"
+        android:layout_height="239dp"
+        android:layout_marginEnd="256dp"
+        android:src="@drawable/_94_1946555_set_cloud_white_cartoon_clouds_sky_soft_weather_cloud_removebg_preview"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView8" />
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="265dp"
-        android:layout_height="108dp"
-        android:layout_marginStart="604dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="580dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/bungee_shade"
-        android:shadowColor="#72A0A6"
+        android:shadowColor="#82B7BD"
         android:shadowDx="-20"
         android:shadowDy="-2"
         android:shadowRadius="20"
@@ -107,6 +116,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView13"
         android:layout_width="825dp"
         android:layout_height="594dp"
         android:layout_marginStart="198dp"
@@ -204,6 +214,7 @@
                 android:layout_marginTop="51dp"
                 android:layout_marginEnd="200dp"
                 android:layout_marginBottom="54dp"
+                android:elevation="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -235,16 +246,25 @@
         android:id="@+id/scaredans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#E91E63"
-        android:backgroundTint="#E91E63"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="332dp"
+        android:background="@color/Grey"
+        android:backgroundTint="@color/Grey"
         android:text="next level"
-<<<<<<< Updated upstream
-        app:iconTint="#E91E63"
-        tools:layout_editor_absoluteX="1132dp"
-        tools:layout_editor_absoluteY="411dp" />
-=======
-        tools:layout_editor_absoluteX="1160dp"
-        tools:layout_editor_absoluteY="449dp" />
->>>>>>> Stashed changes
+        android:textColor="#000000"
+        app:iconTint="@color/Grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView13" />
+
+    <ImageView
+        android:id="@+id/cloud"
+        android:layout_width="639dp"
+        android:layout_height="237dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/_94_1946555_set_cloud_white_cartoon_clouds_sky_soft_weather_cloud_removebg_preview"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
