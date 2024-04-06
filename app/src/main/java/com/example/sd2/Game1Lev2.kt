@@ -1,5 +1,6 @@
 package com.example.sd2
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -7,10 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewFlipper
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class Game1Lev2 : AppCompatActivity() {
     private lateinit var viewFlipper: ViewFlipper
@@ -23,6 +21,8 @@ class Game1Lev2 : AppCompatActivity() {
     private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised")
     private var currentIndex = 0
     private var emotionsVisited = 0
+
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +48,10 @@ class Game1Lev2 : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             showNextEmotion()
-            checkEmotionIndex()
         }
 
         prevButton.setOnClickListener {
             showPreviousEmotion()
-            checkEmotionIndex()
         }
 
         proceedButton.setOnClickListener {
@@ -79,21 +77,37 @@ class Game1Lev2 : AppCompatActivity() {
     }
 
     private fun updateEmotion() {
-
         val emotion = emotions[currentIndex]
-        val drawableId = resources.getIdentifier(("human_"+emotion.toLowerCase()), "drawable", packageName)
+        val drawableId = resources.getIdentifier(("human_" + emotion.toLowerCase()), "drawable", packageName)
         imageView.setImageResource(drawableId)
         textView.text = emotion
+
+        // Play corresponding audio
+        playAudio(emotion)
+
         // Increment emotionsVisited
         emotionsVisited++
     }
 
+    private fun playAudio(emotion: String) {
+        mediaPlayer?.stop() // Stop previously playing audio
+        mediaPlayer?.release() // Release previous MediaPlayer instance
+        val audioResourceId = resources.getIdentifier(emotion.toLowerCase() + "_audio", "raw", packageName)
+        mediaPlayer = MediaPlayer.create(this, audioResourceId)
+        mediaPlayer?.start()
+    }
+
     private fun checkEmotionIndex() {
         if (emotionsVisited >= emotions.size) {
-
             proceedButton.visibility = View.VISIBLE
         } else {
             proceedButton.visibility = View.GONE
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
     }
 }
