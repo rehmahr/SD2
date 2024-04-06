@@ -1,18 +1,19 @@
 package com.example.sd2
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
 class Game3Lev2 : AppCompatActivity() {
     private lateinit var buttons: List<ImageButton>
     private lateinit var cards: MutableList<MemoryCard>
     private var indexOfFirstSelectedCard: Int? = null
     private var indexOfSecondSelectedCard: Int? = null
     private var isClickable = true
+    private var matchedPairs = 0 // Variable to keep track of matched pairs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +46,6 @@ class Game3Lev2 : AppCompatActivity() {
             buttons[index].setOnClickListener { onCardClicked(index) }
         }
 
-        val shuffleButton = findViewById<Button>(R.id.shuffleButton)
-        shuffleButton.setOnClickListener {
-            resetGame(shuffledEmotions)
-        }
     }
 
     private fun onCardClicked(position: Int) {
@@ -91,6 +88,10 @@ class Game3Lev2 : AppCompatActivity() {
                 Toast.makeText(this, "Match found!", Toast.LENGTH_SHORT).show()
                 firstCard.isMatched = true
                 secondCard.isMatched = true
+                matchedPairs++ // Increment matched pairs
+                if (matchedPairs == cards.size / 2) { // Check if all pairs are matched
+                    goToCongratulationsActivity()
+                }
                 isClickable = true // Allow clicks again
             } else {
                 // No match
@@ -123,6 +124,12 @@ class Game3Lev2 : AppCompatActivity() {
             cards[index].isMatched = false
         }
         updateViews()
+    }
+
+    private fun goToCongratulationsActivity() {
+        val intent = Intent(this, Congratulations2::class.java)
+        startActivity(intent)
+        finish()
     }
 
     data class MemoryCard(var front: Int, var back: Int, var isFaceUp: Boolean = false, var isMatched: Boolean = false)

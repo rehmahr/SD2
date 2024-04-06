@@ -3,13 +3,15 @@ package com.example.sd2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class Game2Lev2 : AppCompatActivity() {
     private lateinit var videoView: VideoView
-
+    private lateinit var continueButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game2_lev2)
@@ -29,6 +31,14 @@ class Game2Lev2 : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        videoView.setOnCompletionListener {
+            val intent = Intent(this, Congratulations::class.java)
+            intent.putExtra("CURRENT_LEVEL", "Game2Lev2")
+            startActivity(intent)
+            finish()
+
+        }
     }
 
     private fun setupMediaControls() {
@@ -45,11 +55,11 @@ class Game2Lev2 : AppCompatActivity() {
         }
 
         findViewById<ImageButton>(R.id.rewind).setOnClickListener {
-            videoView.seekTo(videoView.currentPosition - 5000)
+            videoView.seekTo(videoView.currentPosition - 500)
         }
 
         findViewById<ImageButton>(R.id.forward).setOnClickListener {
-            videoView.seekTo(videoView.currentPosition + 5000)
+            videoView.seekTo(videoView.currentPosition + 500)
         }
     }
 }

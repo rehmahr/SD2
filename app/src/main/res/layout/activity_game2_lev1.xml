@@ -9,24 +9,6 @@
     android:visibility="visible"
     tools:context=".Game2Lev1">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="516dp"
-        android:layout_marginTop="68dp"
-        android:fontFamily="@font/bungee_shade"
-        android:shadowColor="@color/pink"
-        android:shadowDx="-20"
-        android:shadowDy="-2"
-        android:shadowRadius="20"
-        android:text="Level 1"
-        android:textColor="@color/purple"
-        android:textSize="40sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/Menubar"
         android:layout_width="80dp"
@@ -94,11 +76,28 @@
     </com.google.android.material.navigation.NavigationView>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/frameLayout"
+        android:layout_width="1200dp"
+        android:layout_height="885dp"
+        app:layout_constraintStart_toEndOf="@+id/Menubar"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity"
-        tools:layout_editor_absoluteX="0dp">
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:fontFamily="@font/bungee_shade"
+            android:shadowColor="@color/pink"
+            android:shadowDx="-20"
+            android:shadowDy="-2"
+            android:shadowRadius="20"
+            android:text="Level 1"
+            android:textAlignment="center"
+            android:textColor="@color/purple"
+            android:textSize="40sp"
+            android:visibility="visible" />
 
         <View
             android:id="@+id/view"
@@ -285,6 +284,17 @@
             android:translationX="1200dp"
             android:translationY="300dp"
             app:srcCompat="@drawable/white_flower" />
+
+        <Button
+            android:id="@+id/continueBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1020dp"
+            android:layout_marginTop="400dp"
+            android:text="CONTINUE"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
     </FrameLayout>
 

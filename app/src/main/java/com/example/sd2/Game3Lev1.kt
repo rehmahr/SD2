@@ -36,21 +36,12 @@ class Game3Lev1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game3_lev1)
 
-        val nextButton = findViewById<Button>(R.id.scaredans)
-        nextButton.setOnClickListener {
-
-            val intent = Intent(this, Game3Lev2::class.java)
-            startActivity(intent)
-
-        }
-
         emotionWordTextView = findViewById(R.id.emotionWord)
         faceGap = findViewById(R.id.faceGap)
         matchEmptyFace = findViewById(R.id.matchEmptyFace)
 
         setDragListener(matchEmptyFace)
 
-        // Initialize draggable views
         val draggableViews = listOf(R.id.matchSad, R.id.matchHappy, R.id.matchSurprised)
         draggableViews.forEach { viewId ->
             findViewById<ImageView>(viewId).setOnTouchListener { view, event ->
@@ -76,16 +67,12 @@ class Game3Lev1 : AppCompatActivity() {
                     val draggedEmotion = draggableEmotions.find { it.imageViewId == draggedView.id }
 
                     if (draggedEmotion?.emotionWord == emotionWordTextView.text.toString()) {
-                        // Correct match
-
                         faceGap.setImageResource(draggedEmotion.emotionDrawableId)
                         showMessage("Correct!")
-                        // Reset the game after 3 seconds
                         handler.postDelayed({
                             resetGame()
                         }, 3000)
                     } else {
-                        // Incorrect match
                         showMessage("Try again!")
                         draggedView.visibility = View.VISIBLE
                     }
@@ -100,23 +87,25 @@ class Game3Lev1 : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private var currentEmotionIndex = 1
+    private var currentEmotionIndex = 0
 
     private fun resetGame() {
-        val newEmotion = draggableEmotions[currentEmotionIndex]
-
-        currentEmotionIndex = (currentEmotionIndex + 1) % draggableEmotions.size
-
-        emotionWordTextView.text = newEmotion.emotionWord
-
-        draggableEmotions.shuffled()
-
-        faceGap.setImageResource(android.R.drawable.ic_menu_help)
-
-        val draggableViews = listOf(R.id.matchSad, R.id.matchHappy, R.id.matchSurprised)
-        draggableViews.forEach { viewId ->
-            findViewById<ImageView>(viewId).visibility = View.VISIBLE
+        currentEmotionIndex++
+        if (currentEmotionIndex < draggableEmotions.size) {
+            val newEmotion = draggableEmotions[currentEmotionIndex]
+            emotionWordTextView.text = newEmotion.emotionWord
+            draggableEmotions.shuffled()
+            faceGap.setImageResource(android.R.drawable.ic_menu_help)
+            val draggableViews = listOf(R.id.matchSad, R.id.matchHappy, R.id.matchSurprised)
+            draggableViews.forEach { viewId ->
+                findViewById<ImageView>(viewId).visibility = View.VISIBLE
+            }
+        } else {
+            // All emotions completed, navigate to Congratulations activity
+            val intent = Intent(this, Congratulations::class.java)
+            intent.putExtra("CURRENT_LEVEL", "Game3Lev1")
+            startActivity(intent)
+            finish()
         }
-
     }
 }

@@ -62,6 +62,7 @@ class Registration : ComponentActivity() {
                 try {
                     val obj = JSONObject(response)
                     Toast.makeText(applicationContext, obj.getString("message"), Toast.LENGTH_LONG).show()
+                    goToNextActivity(this, MainActivity::class.java)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                     Toast.makeText(applicationContext, "Error: ${e.message}", Toast.LENGTH_LONG).show()

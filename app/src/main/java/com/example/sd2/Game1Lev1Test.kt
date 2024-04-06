@@ -1,5 +1,6 @@
 package com.example.sd2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -13,7 +14,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
 import java.net.URL
-
 class Game1Lev1Test : AppCompatActivity() {
     private val images = listOf(
         R.drawable.happy,
@@ -63,9 +63,7 @@ class Game1Lev1Test : AppCompatActivity() {
         sadButton.setOnClickListener { checkAnswer("sad") }
         angryButton.setOnClickListener { checkAnswer("angry") }
         surprisedButton.setOnClickListener { checkAnswer("surprised") }
-        proceedButton.setOnClickListener {
-            goToNextActivity(this, Game1Lev2::class.java)
-        }
+
     }
 
     private fun nextImage() {
@@ -82,8 +80,12 @@ class Game1Lev1Test : AppCompatActivity() {
             if (currentIndex == 0) {
                 // All images shown, show congratulations panel and save score
                 saveScoreToDatabase()
-                gamePanel.visibility = View.GONE
-                congratsPanel.visibility = View.VISIBLE
+
+                    val intent = Intent(this, Congratulations::class.java)
+                    intent.putExtra("CURRENT_LEVEL", "Game1Lev1Test")
+                    startActivity(intent)
+                    finish()
+
             }
         } else {
             // Incorrect answer

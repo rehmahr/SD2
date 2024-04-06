@@ -11,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 class Game2Lev32 : AppCompatActivity() {
     private lateinit var videoView: VideoView
-    private lateinit var continueButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,7 @@ class Game2Lev32 : AppCompatActivity() {
         }
 
         videoView.setOnCompletionListener {
-            showContinueButton()
+            goToNextActivity(this, Congratulations2::class.java)
         }
     }
 
@@ -60,25 +59,4 @@ class Game2Lev32 : AppCompatActivity() {
         }
     }
 
-    private fun showContinueButton() {
-        continueButton = Button(this)
-        continueButton.text = "Continue"
-        continueButton.setOnClickListener {
-            // Start next activity here
-            // Example:
-            val intent = Intent(this, Game2Lev14::class.java)
-            startActivity(intent)
-        }
-
-        val layout: ConstraintLayout = findViewById(R.id.constraintLayout)
-        val params: ConstraintLayout.LayoutParams = ConstraintLayout.LayoutParams(
-            ConstraintLayout.LayoutParams.WRAP_CONTENT,
-            ConstraintLayout.LayoutParams.WRAP_CONTENT
-        )
-        params.topToBottom = videoView.id
-        params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
-        params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
-        params.setMargins(0, 16, 0, 0)
-        layout.addView(continueButton, params)
-    }
 }

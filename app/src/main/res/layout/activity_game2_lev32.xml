@@ -12,7 +12,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="516dp"
         android:layout_marginTop="68dp"
         android:fontFamily="@font/bungee_shade"
         android:shadowColor="@color/pink"
@@ -23,7 +22,8 @@
         android:textColor="@color/purple"
         android:textSize="40sp"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Menubar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.navigation.NavigationView
@@ -94,11 +94,12 @@
     </com.google.android.material.navigation.NavigationView>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="1191dp"
+        android:layout_height="892dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/Menubar"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity"
-        tools:layout_editor_absoluteX="-45dp">
+        tools:context=".MainActivity">
 
         <View
             android:id="@+id/view"

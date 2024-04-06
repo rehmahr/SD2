@@ -76,8 +76,7 @@ class Game1Lev2Test : AppCompatActivity() {
             if (currentIndex == 0) {
                 // All images shown, show congratulations panel and save score
                 saveScoreToDatabase()
-                gamePanel.visibility = View.GONE
-                congratsPanel.visibility = View.VISIBLE
+                goToNextActivity(this, Congratulations2::class.java)
             }
         } else {
             // Incorrect answer
