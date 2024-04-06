@@ -5,10 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffcbd9"
+    android:background="#86C4CC"
     tools:context=".Game1Lev2"
     tools:layout_editor_absoluteX="-322dp"
     tools:layout_editor_absoluteY="-195dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="532dp"
+        android:fontFamily="@font/bungee_shade"
+        android:shadowColor="#82B7BD"
+        android:shadowDx="-20"
+        android:shadowDy="-2"
+        android:shadowRadius="20"
+        android:text="Level 2"
+        android:textColor="@color/purple"
+        android:textSize="50sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/cardView16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
@@ -88,12 +107,13 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView16"
         android:layout_width="800dp"
         android:layout_height="600dp"
         android:layout_marginStart="154dp"
         android:layout_marginTop="166dp"
         android:layout_marginEnd="240dp"
-        android:layout_marginBottom="134dp"
+        android:layout_marginBottom="90dp"
         app:cardBackgroundColor="#e5e5e5"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
@@ -236,5 +256,35 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="728dp"
+        android:layout_height="285dp"
+        android:layout_marginEnd="472dp"
+        android:layout_marginBottom="412dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView8"
+        app:layout_constraintEnd_toEndOf="@+id/cardView16"
+        app:srcCompat="@drawable/cloud2" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="376dp"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView16"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:srcCompat="@drawable/cloud3" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="359dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardView16"
+        app:layout_constraintTop_toBottomOf="@+id/cardView8"
+        app:srcCompat="@drawable/cloud3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

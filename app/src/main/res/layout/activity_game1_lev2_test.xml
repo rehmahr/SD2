@@ -5,10 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffcbd9"
+    android:background="#86C4CC"
     tools:context=".Game1Lev2Test"
     tools:layout_editor_absoluteX="-322dp"
     tools:layout_editor_absoluteY="-195dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="452dp"
+        android:fontFamily="@font/bungee_shade"
+        android:shadowColor="#82B7BD"
+        android:shadowDx="-20"
+        android:shadowDy="-2"
+        android:shadowRadius="20"
+        android:text="Level 2 - Test"
+        android:textColor="@color/purple"
+        android:textSize="50sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/cardView16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
@@ -134,7 +153,7 @@
         android:layout_marginStart="154dp"
         android:layout_marginTop="166dp"
         android:layout_marginEnd="240dp"
-        android:layout_marginBottom="134dp"
+        android:layout_marginBottom="85dp"
         app:cardBackgroundColor="#e5e5e5"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
@@ -177,7 +196,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
-
 
 
             <Button
@@ -229,5 +247,43 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="409dp"
+        android:layout_height="434dp"
+        android:layout_marginStart="700dp"
+        android:layout_marginBottom="324dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gamePanel"
+        app:layout_constraintStart_toStartOf="@+id/gamePanel"
+        app:srcCompat="@drawable/sun" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="529dp"
+        android:layout_height="319dp"
+        android:layout_marginStart="764dp"
+        android:layout_marginBottom="364dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gamePanel"
+        app:layout_constraintStart_toStartOf="@+id/gamePanel"
+        app:srcCompat="@drawable/cloud2" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="594dp"
+        android:layout_height="244dp"
+        android:layout_marginEnd="664dp"
+        android:layout_marginBottom="380dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView8"
+        app:layout_constraintEnd_toEndOf="@+id/gamePanel"
+        app:srcCompat="@drawable/cloud3" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="413dp"
+        android:layout_height="267dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gamePanel"
+        app:layout_constraintStart_toEndOf="@+id/gamePanel"
+        app:srcCompat="@drawable/cloud3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

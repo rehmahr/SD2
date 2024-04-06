@@ -15,7 +15,7 @@ class Game2Lev32 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game2_lev1)
+        setContentView(R.layout.activity_game2_lev32)
 
         videoView = findViewById(R.id.videoView)
 

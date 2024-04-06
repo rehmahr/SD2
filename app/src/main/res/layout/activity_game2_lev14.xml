@@ -5,9 +5,9 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BGC"
+    android:background="#D490DF"
     android:visibility="visible"
-    tools:context=".Game2Lev1">
+    tools:context=".Game2Lev14">
 
     <TextView
         android:id="@+id/textView2"
@@ -20,7 +20,7 @@
         android:shadowDx="-20"
         android:shadowDy="-2"
         android:shadowRadius="20"
-        android:text="Level 1"
+        android:text="Level 1.4"
         android:textColor="@color/purple"
         android:textSize="40sp"
         android:visibility="visible"
@@ -240,6 +240,52 @@
             android:textSize="60sp"
             android:typeface="monospace"
             android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="78dp"
+            android:layout_height="80dp"
+            android:rotation="-34"
+            android:rotationY="2"
+            android:translationX="100dp"
+            android:translationY="30dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="70dp"
+            android:layout_height="75dp"
+            android:rotation="26"
+            android:translationX="1100dp"
+            android:translationY="500dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:rotation="-17"
+            android:translationX="110dp"
+            android:translationY="500dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView24"
+            android:layout_width="53dp"
+            android:layout_height="48dp"
+            android:rotation="6"
+            android:translationX="900dp"
+            android:translationY="100dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:rotation="-13"
+            android:translationX="1200dp"
+            android:translationY="300dp"
+            app:srcCompat="@drawable/white_flower" />
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

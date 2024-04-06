@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BGC"
+    android:background="#D490DF"
     android:visibility="visible"
     tools:context=".Game2Lev1">
 
@@ -29,8 +29,8 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/Menubar"
-        android:layout_width="79dp"
-        android:layout_height="462dp"
+        android:layout_width="80dp"
+        android:layout_height="458dp"
         android:layout_marginTop="209dp"
         android:background="@drawable/more_round"
         android:elevation="60dp"
@@ -45,50 +45,49 @@
 
         <ImageButton
             android:id="@+id/home_button"
-            android:layout_width="60dp"
+            android:layout_width="57dp"
             android:layout_height="60dp"
             android:background="@drawable/more_round"
             android:contentDescription="home_button"
             android:elevation="20dp"
             android:scaleType="fitCenter"
-            android:translationX="8dp"
+            android:translationX="15dp"
             android:translationY="50dp"
             android:visibility="visible"
             app:srcCompat="@drawable/home_button" />
 
-
         <ImageButton
             android:id="@+id/report"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="59dp"
             android:background="@drawable/more_round"
             android:contentDescription="report"
             android:scaleType="fitCenter"
-            android:translationX="8dp"
+            android:translationX="15dp"
             android:translationY="150dp"
             android:visibility="visible"
             app:srcCompat="@drawable/report" />
 
         <ImageButton
             android:id="@+id/feedback"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="53dp"
+            android:layout_height="59dp"
             android:background="@drawable/more_round"
             android:contentDescription="feedback"
             android:scaleType="fitCenter"
-            android:translationX="8dp"
+            android:translationX="15dp"
             android:translationY="250dp"
             android:visibility="visible"
             app:srcCompat="@drawable/icons8_feedback_100" />
 
         <ImageButton
             android:id="@+id/help"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="51dp"
+            android:layout_height="57dp"
             android:background="@drawable/more_round"
             android:contentDescription="help"
             android:scaleType="fitCenter"
-            android:translationX="8dp"
+            android:translationX="15dp"
             android:translationY="350dp"
             android:visibility="visible"
             app:srcCompat="@drawable/help" />
@@ -241,5 +240,52 @@
             android:typeface="monospace"
             android:visibility="visible" />
 
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="78dp"
+            android:layout_height="80dp"
+            android:rotation="-34"
+            android:rotationY="2"
+            android:translationX="100dp"
+            android:translationY="30dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="70dp"
+            android:layout_height="75dp"
+            android:rotation="26"
+            android:translationX="1100dp"
+            android:translationY="500dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:rotation="-17"
+            android:translationX="110dp"
+            android:translationY="500dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView24"
+            android:layout_width="53dp"
+            android:layout_height="48dp"
+            android:rotation="6"
+            android:translationX="900dp"
+            android:translationY="100dp"
+            app:srcCompat="@drawable/white_flower" />
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="58dp"
+            android:layout_height="53dp"
+            android:rotation="-13"
+            android:translationX="1200dp"
+            android:translationY="300dp"
+            app:srcCompat="@drawable/white_flower" />
+
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
