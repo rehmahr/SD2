@@ -3,12 +3,13 @@ package com.example.sd2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 
 class Game2Lev1 : AppCompatActivity() {
     private lateinit var videoView: VideoView
@@ -28,6 +29,7 @@ class Game2Lev1 : AppCompatActivity() {
         scaredButton = findViewById(R.id.scared_ans)
         sadButton = findViewById(R.id.sad_ans)
 
+        // Directly specify the video file name within the URI string
         val offlineUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.happy_lev1}")
         videoView.setVideoURI(offlineUri)
 
@@ -36,6 +38,11 @@ class Game2Lev1 : AppCompatActivity() {
         videoView.setOnCompletionListener {
             showContinueButton()
         }
+
+        happyButton.setOnClickListener { checkAnswer("happy") }
+        angryButton.setOnClickListener { checkAnswer("angry") }
+        scaredButton.setOnClickListener { checkAnswer("scared") }
+        sadButton.setOnClickListener { checkAnswer("sad") }
 
         val imageButton5 = findViewById<ImageButton>(R.id.home_button)
         imageButton5.setOnClickListener {
@@ -78,6 +85,47 @@ class Game2Lev1 : AppCompatActivity() {
         continueButton.setOnClickListener {
             val intent = Intent(this, Game2lev12::class.java)
             startActivity(intent)
+            finish()
         }
+    }
+
+    private fun checkAnswer(selectedOption: String) {
+        val correctOption = getCorrectOptionFromRawFileName()
+        Log.d("Game2Lev1", "Correct option: $correctOption, Selected option: $selectedOption")
+
+
+
+        if (selectedOption == correctOption) {
+            // Set the selected button to green
+            setOtherButtonsGray(selectedOption)
+
+            val greenColor = 0xFF00FF00.toInt() // Green color
+            when (selectedOption) {
+                "happy" -> happyButton.setBackgroundColor(greenColor)
+                "angry" -> angryButton.setBackgroundColor(greenColor)
+                "scared" -> scaredButton.setBackgroundColor(greenColor)
+                "sad" -> sadButton.setBackgroundColor(greenColor)
+            }
+            // Set other buttons to gray
+
+        } else {
+            // Show toast message to try again
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    private fun setOtherButtonsGray(selectedOption: String) {
+        val buttons = listOf(happyButton, angryButton, scaredButton, sadButton)
+        for (button in buttons) {
+            if (button.tag != selectedOption) {
+                button.setBackgroundColor(0xFFCCCCCC.toInt()) // Gray color
+            }
+        }
+    }
+
+    private fun getCorrectOptionFromRawFileName(): String {
+
+        return "happy" // Dummy value for now
     }
 }
