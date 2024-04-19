@@ -50,59 +50,74 @@
             android:layout_height="match_parent"
             android:background="@drawable/rounded_corner_navigation_view">
 
-            <ImageButton
-                android:id="@+id/imageButton5"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/home_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/Menubar"
+                android:layout_width="80dp"
+                android:layout_height="458dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="20dp"
 
-            <ImageButton
-                android:id="@+id/imageButton7"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/feedback"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
-
-            <ImageButton
-                android:id="@+id/imageButton9"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="29dp"
-                android:layout_marginEnd="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/report"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
-
-            <ImageButton
-                android:id="@+id/imageButton10"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="21dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="70dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/help"
+                android:background="@drawable/more_round"
+                android:elevation="60dp"
+                android:visibility="visible"
+                app:itemIconTint="@color/Grey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+
+                <ImageButton
+                    android:id="@+id/home_button"
+                    android:layout_width="57dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/more_round"
+                    android:contentDescription="home_button"
+                    android:elevation="20dp"
+                    android:scaleType="fitCenter"
+                    android:translationX="15dp"
+                    android:translationY="50dp"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/home_button" />
+
+                <ImageButton
+                    android:id="@+id/report"
+                    android:layout_width="55dp"
+                    android:layout_height="59dp"
+                    android:background="@drawable/more_round"
+                    android:contentDescription="report"
+                    android:scaleType="fitCenter"
+                    android:translationX="15dp"
+                    android:translationY="150dp"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/report" />
+
+                <ImageButton
+                    android:id="@+id/feedback"
+                    android:layout_width="53dp"
+                    android:layout_height="59dp"
+                    android:background="@drawable/more_round"
+                    android:contentDescription="feedback"
+                    android:scaleType="fitCenter"
+                    android:translationX="15dp"
+                    android:translationY="250dp"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/icons8_feedback_100" />
+
+                <ImageButton
+                    android:id="@+id/help"
+                    android:layout_width="51dp"
+                    android:layout_height="57dp"
+                    android:background="@drawable/more_round"
+                    android:contentDescription="help"
+                    android:scaleType="fitCenter"
+                    android:translationX="15dp"
+                    android:translationY="350dp"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/help" />
+            </com.google.android.material.navigation.NavigationView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
