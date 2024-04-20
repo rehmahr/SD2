@@ -26,7 +26,7 @@ class Game1Lev0 : ComponentActivity() {
         val imageButton2 = findViewById<ImageButton>(R.id.imageButton2)
         val imageButton3 = findViewById<ImageButton>(R.id.imageButton3)
         val imageButton4 = findViewById<ImageButton>(R.id.imageButton4)
-        val imageButton5 = findViewById<ImageButton>(R.id.imageButton5)
+        val imageButton5 = findViewById<ImageButton>(R.id.home_button)
         val nextButton = findViewById<Button>(R.id.scaredans)
 
         imageButton1.setOnClickListener {
