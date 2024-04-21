@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".homepage">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Orangy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/Menubar"
+        android:layout_width="120dp"
+        android:layout_height="538dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/more_round"
+        android:elevation="60dp"
+        android:visibility="visible"
+        app:itemIconTint="@color/Grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"
+
+        >
+
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="76dp"
+            android:layout_height="74dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="home_button"
+            android:elevation="20dp"
+            android:scaleType="fitCenter"
+            android:translationX="20dp"
+            android:translationY="50dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/home_button" />
+
+        <ImageButton
+            android:id="@+id/report"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/more_round"
+            android:contentDescription="login"
+            android:scaleType="fitCenter"
+            android:translationX="20dp"
+            android:translationY="150dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/icons8_login_64" />
+
+        <ImageButton
+            android:id="@+id/feedback"
+            android:layout_width="76dp"
+            android:layout_height="74dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="feedback"
+            android:scaleType="fitCenter"
+            android:translationX="20dp"
+            android:translationY="250dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/icons8_feedback_100" />
+
+        <ImageButton
+            android:id="@+id/help"
+            android:layout_width="76dp"
+            android:layout_height="74dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="help"
+            android:scaleType="fitCenter"
+            android:translationX="20dp"
+            android:translationY="350dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/help" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:translationX="5dp"
+            android:translationY="450dp" />
+
+    </com.google.android.material.navigation.NavigationView>
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="1200dp"
+        android:layout_height="885dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/Menubar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+
+        <ImageView
+            android:id="@+id/logomain"
+            android:layout_width="420dp"
+            android:layout_height="144dp"
+            android:layout_marginEnd="356dp"
+            android:layout_marginBottom="668dp"
+            android:scaleType="centerCrop"
+            android:translationX="300dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:srcCompat="@drawable/mainlogo2" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="522dp"
+            android:layout_height="492dp"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/bungee_inline"
+            android:lineSpacingExtra="34sp"
+            android:outlineAmbientShadowColor="@color/beige"
+            android:shadowColor="@color/pink"
+            android:shadowDx="-20"
+            android:shadowRadius="1"
+
+            android:text="Fun  Games That Encourage Problem Solving And Cognitive Thinking"
+            android:textAlignment="viewStart"
+            android:textColor="@color/beige"
+            android:textSize="45sp"
+
+
+            android:translationY="150dp"
+            android:typeface="monospace"
+
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="206dp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="617dp"
+            android:layout_height="390dp"
+            android:layout_marginStart="185dp"
+            android:layout_marginTop="170dp"
+            android:background="@drawable/more_round"
+            android:elevation="60dp"
+            android:translationX="300dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="517dp"
+            android:layout_height="257dp"
+            android:layout_marginStart="261dp"
+            android:layout_marginTop="215dp"
+            android:elevation="70dp"
+            android:translationX="275dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/rewind"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="rewind"
+            android:elevation="60dp"
+            android:scaleType="fitCenter"
+            android:translationX="540dp"
+            android:translationY="490dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/rewind" />
+
+        <ImageButton
+            android:id="@+id/pause"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="pause"
+            android:elevation="60dp"
+            android:scaleType="fitCenter"
+            android:translationX="700dp"
+            android:translationY="490dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/pause" />
+
+        <ImageButton
+            android:id="@+id/play"
+            android:layout_width="48dp"
+            android:layout_height="60dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="play"
+            android:elevation="60dp"
+            android:scaleType="fitCenter"
+            android:translationX="800dp"
+            android:translationY="490dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/play_button" />
+
+        <ImageButton
+            android:id="@+id/forward"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/more_round"
+            android:contentDescription="forward"
+            android:elevation="60dp"
+            android:scaleType="fitCenter"
+            android:translationX="1000dp"
+            android:translationY="490dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/forward" />
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
