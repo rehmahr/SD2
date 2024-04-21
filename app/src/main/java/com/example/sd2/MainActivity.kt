@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.AsyncTask
 import androidx.activity.ComponentActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -16,6 +17,7 @@ import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -30,6 +32,8 @@ import java.net.URLEncoder
 
 // test again
 class MainActivity : ComponentActivity() {
+
+    private var userID: Int = -1 // Default value indicating no userID
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -71,23 +75,42 @@ class MainActivity : ComponentActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 val responseBody = response.body?.string()
-                if (responseBody == "success") {
-                    runOnUiThread {
-                        Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
-                        // Proceed to next activity or perform any other actions
-                        goToNextActivity(this@MainActivity, Dashboard::class.java)
+                println("Response body: $responseBody")
+                if (responseBody != null) {
+                    val json = JSONObject(responseBody)
+                    val status = json.optString("status")
+                    if (status == "success") {
+                        val userID = json.getInt("userID")
+                        // Store userID globally
+                        (application as MyApp).userID = userID
+                        println("User ID: $userID")
+
+                        runOnUiThread {
+                            Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
+                            // Proceed to next activity or perform any other actions
+                            goToNextActivity(this@MainActivity, Dashboard::class.java)
+                        }
+                    } else {
+                        println("Status is not 'success'")
+                        runOnUiThread {
+                            Toast.makeText(applicationContext, "Login failed: Invalid username or password", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } else {
+                    println("Response body is null")
                     runOnUiThread {
-                        Toast.makeText(applicationContext, "Login failed: Invalid username or password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Login failed: Server response is empty", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
+
+
         })
     }
+
 }
 
-    fun goToNextActivity(context: Context, nextActivityClass: Class<*>) {
+fun goToNextActivity(context: Context, nextActivityClass: Class<*>) {
     val intent = Intent(context, nextActivityClass)
     context.startActivity(intent)
 }
