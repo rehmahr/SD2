@@ -18,6 +18,7 @@ import org.json.JSONObject
 class Registration : ComponentActivity() {
     private lateinit var editTextName: EditText
     private lateinit var editTextAge: EditText
+    private lateinit var editTextEmail: EditText
     private lateinit var spinnerUserType: Spinner
     private lateinit var editTextPassword: EditText
     private lateinit var buttonRegister: Button
@@ -29,6 +30,7 @@ class Registration : ComponentActivity() {
 
         spinnerUserType = findViewById(R.id.spinnerUserType)
         editTextName = findViewById(R.id.editTextName)
+        editTextEmail = findViewById(R.id.editTextEmail)
         editTextAge = findViewById(R.id.editTextAge)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonRegister = findViewById(R.id.buttonNext)
@@ -51,6 +53,7 @@ class Registration : ComponentActivity() {
     private fun registerUser() {
         val name = editTextName.text.toString()
         val age = editTextAge.text.toString().toIntOrNull() ?: 0
+        val email = editTextEmail.text.toString()
         val userType = spinnerUserType.selectedItem.toString()
         val password = editTextPassword.text.toString()
 
@@ -78,6 +81,7 @@ class Registration : ComponentActivity() {
                 params["name"] = name
                 params["age"] = age.toString()
                 params["usertype"] = userType
+                params["email"] = email
                 params["password"] = password
                 return params
             }

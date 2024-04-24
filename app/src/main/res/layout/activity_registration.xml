@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="1279dp"
-        android:layout_height="812dp"
+        android:layout_height="match_parent"
         android:background="#9cadce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +21,7 @@
             android:layout_width="553dp"
             android:layout_height="669dp"
             android:layout_marginStart="350dp"
-            android:layout_marginTop="50dp"
             android:layout_marginEnd="350dp"
-            android:layout_marginBottom="50dp"
             app:cardCornerRadius="30dp"
             app:cardElevation="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,9 +38,8 @@
                     android:id="@+id/nameLbl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="151dp"
-                    android:layout_marginTop="88dp"
-                    android:layout_marginEnd="359dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginEnd="190dp"
                     android:text="Name"
                     android:textColor="#4C5F6B"
                     android:textColorLink="#4C5F6B"
@@ -55,10 +52,7 @@
                 <EditText
                     android:id="@+id/editTextName"
                     android:layout_width="234dp"
-                    android:layout_height="51dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginEnd="169dp"
+                    android:layout_height="45dp"
                     android:background="#FFFFFF"
                     android:backgroundTint="#FFFFFF"
                     android:elevation="5dp"
@@ -66,18 +60,17 @@
                     android:inputType="text"
                     android:paddingStart="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nameLbl" />
 
+
                 <TextView
-                    android:id="@+id/ageLbl"
+                    android:id="@+id/emailLbl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="151dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="373dp"
-                    android:text="Age"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="195dp"
+                    android:text="Email"
                     android:textColor="#4C5F6B"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -86,11 +79,36 @@
                     app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
                 <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="234dp"
+                    android:layout_height="45dp"
+                    android:background="#FFFFFF"
+                    android:backgroundTint="#FFFFFF"
+                    android:elevation="10dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailLbl" />
+
+                <TextView
+                    android:id="@+id/ageLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="210dp"
+                    android:text="Age"
+                    android:textColor="#4C5F6B"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+                <EditText
                     android:id="@+id/editTextAge"
                     android:layout_width="234dp"
-                    android:layout_height="51dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginEnd="169dp"
+                    android:layout_height="45dp"
                     android:background="#FFFFFF"
                     android:backgroundTint="#FFFFFF"
                     android:elevation="5dp"
@@ -105,9 +123,9 @@
                     android:id="@+id/typeLbl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="368dp"
+                    android:layout_marginStart="157dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="361dp"
                     android:text="Type"
                     android:textColor="#4C5F6B"
                     android:textSize="16sp"
@@ -119,9 +137,9 @@
                 <Spinner
                     android:id="@+id/spinnerUserType"
                     android:layout_width="234dp"
-                    android:layout_height="51dp"
+                    android:layout_height="45dp"
                     android:layout_marginStart="150dp"
-                    android:layout_marginEnd="169dp"
+                    android:layout_marginEnd="150dp"
                     android:background="#FFFFFF"
                     android:backgroundTint="#FFFFFF"
                     android:elevation="5dp"
@@ -129,14 +147,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/typeLbl" />
 
-
                 <TextView
                     android:id="@+id/passLbl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="151dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="331dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="165dp"
                     android:text="Password"
                     android:textColor="#4C5F6B"
                     android:textSize="16sp"
@@ -148,9 +164,7 @@
                 <EditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="234dp"
-                    android:layout_height="51dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginEnd="169dp"
+                    android:layout_height="45dp"
                     android:background="#FFFFFF"
                     android:backgroundTint="#FFFFFF"
                     android:elevation="5dp"
@@ -165,9 +179,8 @@
                     android:id="@+id/conPassLbl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="151dp"
-                    android:layout_marginTop="11dp"
-                    android:layout_marginEnd="268dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="102dp"
                     android:text="Confirm Password"
                     android:textColor="#4C5F6B"
                     android:textSize="16sp"
@@ -179,9 +192,7 @@
                 <EditText
                     android:id="@+id/editTextTextPassword3"
                     android:layout_width="234dp"
-                    android:layout_height="51dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginEnd="169dp"
+                    android:layout_height="45dp"
                     android:background="#FFFFFF"
                     android:backgroundTint="#FFFFFF"
                     android:elevation="5dp"
@@ -189,7 +200,6 @@
                     android:inputType="textPassword"
                     android:paddingStart="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/conPassLbl" />
 
@@ -197,10 +207,7 @@
                     android:id="@+id/buttonNext"
                     android:layout_width="137dp"
                     android:layout_height="51dp"
-                    android:layout_marginStart="208dp"
-                    android:layout_marginTop="45dp"
                     android:layout_marginEnd="208dp"
-                    android:layout_marginBottom="64dp"
                     android:background="#4C5F6B"
                     android:elevation="100dp"
                     android:text="Register"
@@ -208,7 +215,6 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
 
                 <ImageView
@@ -225,14 +231,10 @@
                     android:id="@+id/imageView12"
                     android:layout_width="431dp"
                     android:layout_height="214dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="11dp"
                     android:elevation="5dp"
                     android:src="@drawable/_94_1946555_set_cloud_white_cartoon_clouds_sky_soft_weather_cloud_removebg_preview"
-                    app:layout_constraintEnd_toStartOf="@+id/conPassLbl"
-                    app:layout_constraintHorizontal_bias="0.665"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonNext" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -252,6 +254,7 @@
             android:id="@+id/imageView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="9dp"
             android:src="@drawable/_94_1946555_set_cloud_white_cartoon_clouds_sky_soft_weather_cloud_removebg_preview"
             app:layout_constraintBottom_toTopOf="@+id/imageView4"
@@ -266,6 +269,7 @@
             android:layout_marginEnd="100dp"
             android:src="@drawable/c22550bde27a98628c20ac03db921a36"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 

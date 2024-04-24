@@ -96,26 +96,35 @@ class Game1Lev1Test : AppCompatActivity() {
     private fun saveScoreToDatabase() {
         GlobalScope.launch(Dispatchers.IO) {
             try {
+                val userID = (application as MyApp).userID
+                println(userID)
+                val gameID = 1 // Assuming gameID for game1 is 1
+                val levelID = 1 // Assuming levelID for level1 is 1
+
                 val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.doOutput = true
                 urlConnection.requestMethod = "POST"
-                val postData: ByteArray = "mistakes=$mistakes".toByteArray(Charsets.UTF_8)
-                urlConnection.outputStream.write(postData)
+
+                // Construct POST data
+                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes"
+                println(postData)
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
 
                 val responseCode = urlConnection.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     // Score saved successfully
-                    println("saved")
+                    println("Score saved successfully")
                 } else {
                     // Error saving score
-                    println("error")
+                    println("Error saving score")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
+
 
     private fun getImageName(imageResId: Int): String {
         return resources.getResourceEntryName(imageResId)
