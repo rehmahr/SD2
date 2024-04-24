@@ -81,14 +81,22 @@ class MainActivity : ComponentActivity() {
                     val status = json.optString("status")
                     if (status == "success") {
                         val userID = json.getInt("userID")
+                        val userType = json.optString("userType") // Assuming userType is returned from PHP
                         // Store userID globally
                         (application as MyApp).userID = userID
                         println("User ID: $userID")
 
                         runOnUiThread {
                             Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
-                            // Proceed to next activity or perform any other actions
-                            goToNextActivity(this@MainActivity, Dashboard::class.java)
+                            // Redirect based on userType
+                            if (userType == "student") {
+                                goToNextActivity(this@MainActivity, Dashboard::class.java)
+                            } else if (userType == "caretaker") {
+                                goToNextActivity(this@MainActivity, CTDashboard::class.java)
+                            } else {
+                                // Handle unknown userType
+                                Toast.makeText(applicationContext, "Unknown user type", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     } else {
                         println("Status is not 'success'")
@@ -103,10 +111,9 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-
-
         })
     }
+
 
 }
 
