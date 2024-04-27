@@ -17,6 +17,7 @@ class Game1Lev1 : ComponentActivity() {
     private lateinit var imageView: ImageView
     private lateinit var textView: TextView
     private lateinit var proceedButton: Button
+   // private lateinit var bgmMediaPlayer: MediaPlayer // Add this line
 
     private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised")
     private var currentIndex = 0
@@ -60,6 +61,13 @@ class Game1Lev1 : ComponentActivity() {
 
         // Set initial emotion
         updateEmotion()
+
+        // Initialize background music
+     //   bgmMediaPlayer = MediaPlayer.create(this, R.raw.bgm1)
+     //   bgmMediaPlayer.isLooping = true
+     //   bgmMediaPlayer.setVolume(0.05f, 0.05f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+     //   bgmMediaPlayer.start()
+
     }
 
     private fun showNextEmotion() {
@@ -95,6 +103,7 @@ class Game1Lev1 : ComponentActivity() {
         mediaPlayer?.release() // Release previous MediaPlayer instance
         val audioResourceId = resources.getIdentifier(emotion.toLowerCase() + "_audio", "raw", packageName)
         mediaPlayer = MediaPlayer.create(this, audioResourceId)
+        mediaPlayer?.setVolume(1.5f, 1.5f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
         mediaPlayer?.start()
     }
 
@@ -110,5 +119,7 @@ class Game1Lev1 : ComponentActivity() {
         super.onStop()
         mediaPlayer?.stop()
         mediaPlayer?.release()
+     //   bgmMediaPlayer.stop() // Stop background music when activity is stopped
+     //   bgmMediaPlayer.release()
     }
 }

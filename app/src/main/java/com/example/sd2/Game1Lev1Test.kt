@@ -1,6 +1,7 @@
 package com.example.sd2
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -36,6 +37,7 @@ class Game1Lev1Test : AppCompatActivity() {
     private lateinit var angryButton: Button
     private lateinit var surprisedButton: Button
     private lateinit var proceedButton: Button
+    // private lateinit var bgmMediaPlayer: MediaPlayer
 
 
     private var currentIndex = -1

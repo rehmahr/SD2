@@ -12,6 +12,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 class Game1Lev0 : ComponentActivity() {
 
+    private lateinit var bgmMediaPlayer: MediaPlayer
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -58,10 +61,17 @@ class Game1Lev0 : ComponentActivity() {
             val intent = Intent(this, Game1Lev1::class.java)
             startActivity(intent)
         }
+
+        // Initialize background music
+        bgmMediaPlayer = MediaPlayer.create(this, R.raw.bgm1)
+        bgmMediaPlayer.isLooping = true
+        bgmMediaPlayer.setVolume(0.05f, 0.05f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+        bgmMediaPlayer.start()
     }
 
     private fun playSound(audioResource: Int) {
         val mediaPlayer = MediaPlayer.create(this, audioResource)
+        mediaPlayer?.setVolume(1.5f, 1.5f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
         mediaPlayer.start()
         mediaPlayer.setOnCompletionListener {
             // Release MediaPlayer when playback is completed
