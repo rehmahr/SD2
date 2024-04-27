@@ -14,7 +14,13 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.*
+import kotlin.concurrent.schedule
 class Game1Lev1Test : AppCompatActivity() {
+
+    private var startTime: Long = 0
+    private var endTime: Long = 0
+
     private val images = listOf(
         R.drawable.happy,
         R.drawable.sad,
@@ -64,6 +70,8 @@ class Game1Lev1Test : AppCompatActivity() {
         angryButton.setOnClickListener { checkAnswer("angry") }
         surprisedButton.setOnClickListener { checkAnswer("surprised") }
 
+        startTime = System.currentTimeMillis()
+
     }
 
     private fun nextImage() {
@@ -94,6 +102,16 @@ class Game1Lev1Test : AppCompatActivity() {
     }
 
     private fun saveScoreToDatabase() {
+
+        endTime = System.currentTimeMillis()
+        val timeTaken = endTime - startTime
+
+        val minutes = (timeTaken / 1000) / 60
+        val seconds = (timeTaken / 1000) % 60
+
+        // Format time as mm:ss
+        val formattedTime = String.format("%02d:%02d", minutes, seconds)
+
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val userID = (application as MyApp).userID
@@ -107,7 +125,7 @@ class Game1Lev1Test : AppCompatActivity() {
                 urlConnection.requestMethod = "POST"
 
                 // Construct POST data
-                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes"
+                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes&time=$formattedTime"
                 println(postData)
                 urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
 

@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
 import org.json.JSONArray
@@ -83,16 +84,28 @@ class CTDashboard : AppCompatActivity() {
         val tableLayout = findViewById<TableLayout>(R.id.tableLayout)
 
         val row = TableRow(this)
-        val layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT)
+        val layoutParams = TableRow.LayoutParams(
+            TableRow.LayoutParams.MATCH_PARENT,
+            TableRow.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(0, 8, 0, 8) // Add some vertical spacing between rows
         row.layoutParams = layoutParams
 
         val idTextView = TextView(this)
         idTextView.text = studentId.toString()
+        idTextView.setPadding(16, 8, 16, 8) // Add padding to the text view
+
         val nameTextView = TextView(this)
         nameTextView.text = studentName
+        nameTextView.setPadding(16, 8, 16, 8) // Add padding to the text view
+
+        val profileButton = Button(this)
+        profileButton.text = "Go To Profile"
+        profileButton.setPadding(16, 8, 16, 8) // Add padding to the button
 
         row.addView(idTextView)
         row.addView(nameTextView)
+        row.addView(profileButton)
 
         tableLayout.addView(row)
     }
