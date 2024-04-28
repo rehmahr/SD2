@@ -60,6 +60,11 @@ class Game1Lev0 : ComponentActivity() {
         nextButton.setOnClickListener {
             val intent = Intent(this, Game1Lev1::class.java)
             startActivity(intent)
+
+            val progress = 20;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 1, 2, progress)
         }
 
         // Initialize background music

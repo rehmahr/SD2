@@ -11,6 +11,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -23,6 +26,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
+import java.net.URL
 import java.net.URLEncoder
 
 
@@ -120,4 +124,27 @@ class MainActivity : ComponentActivity() {
 fun goToNextActivity(context: Context, nextActivityClass: Class<*>) {
     val intent = Intent(context, nextActivityClass)
     context.startActivity(intent)
+}
+
+fun saveProgressToDatabase(userID: Int, gameID: Int, levelID: Int, progress: Int) {
+    GlobalScope.launch(Dispatchers.IO) {
+        try {
+            val url = URL("http://192.168.56.1/seniordes/progressRep.php")
+            val urlConnection = url.openConnection() as HttpURLConnection
+            urlConnection.doOutput = true
+            urlConnection.requestMethod = "POST"
+
+            val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&progress=$progress"
+            urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
+
+            val responseCode = urlConnection.responseCode
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                println("Progress saved successfully")
+            } else {
+                println("Error saving progress")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }
