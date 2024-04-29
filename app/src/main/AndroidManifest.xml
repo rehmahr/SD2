@@ -18,6 +18,42 @@
         android:theme="@style/Theme.SD2"
         tools:targetApi="31">
         <activity
+            android:name=".Game2Lev03"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Game2Lev02"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Game2Lev01"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Game2Lev0"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".homepage"
             android:exported="true"
             android:theme="@style/Theme.SD2">
@@ -197,6 +233,4 @@
             android:resource="@array/preloaded_fonts" />
     </application>
 
-
-
-    </manifest>
+</manifest>
