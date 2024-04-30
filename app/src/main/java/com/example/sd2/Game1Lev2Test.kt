@@ -76,6 +76,12 @@ class Game1Lev2Test : AppCompatActivity() {
             if (currentIndex == 0) {
                 // All images shown, show congratulations panel and save score
                 saveScoreToDatabase()
+
+                val progress = 40
+                val userID = (application as MyApp).userID
+
+                saveProgressToDatabase(userID, 1, 3, progress)
+
                 goToNextActivity(this, Congratulations2::class.java)
             }
         } else {

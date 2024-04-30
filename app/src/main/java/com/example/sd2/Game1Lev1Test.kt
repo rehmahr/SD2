@@ -91,6 +91,11 @@ class Game1Lev1Test : AppCompatActivity() {
                 // All images shown, show congratulations panel and save score
                 saveScoreToDatabase()
 
+                    val progress = 40
+                    val userID = (application as MyApp).userID
+
+                    saveProgressToDatabase(userID, 1, 1, progress)
+
                     val intent = Intent(this, Congratulations::class.java)
                     intent.putExtra("CURRENT_LEVEL", "Game1Lev1Test")
                     startActivity(intent)

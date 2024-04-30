@@ -57,6 +57,11 @@ class Game1Lev1 : ComponentActivity() {
 
         proceedButton.setOnClickListener {
             goToNextActivity(this, Game1Lev1Test::class.java)
+
+            val progress = 10;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 1, 1, progress)
         }
 
         // Set initial emotion
