@@ -37,7 +37,7 @@ class Game1Lev1Test : AppCompatActivity() {
     private lateinit var angryButton: Button
     private lateinit var surprisedButton: Button
     private lateinit var proceedButton: Button
-    // private lateinit var bgmMediaPlayer: MediaPlayer
+    private lateinit var bgmMediaPlayer: MediaPlayer
 
 
     private var currentIndex = -1
@@ -153,5 +153,11 @@ class Game1Lev1Test : AppCompatActivity() {
 
     private fun getImageName(imageResId: Int): String {
         return resources.getResourceEntryName(imageResId)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        bgmMediaPlayer.stop() // Stop background music when activity is stopped
+        bgmMediaPlayer.release()
     }
 }

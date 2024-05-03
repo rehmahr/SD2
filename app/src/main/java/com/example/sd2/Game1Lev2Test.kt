@@ -1,5 +1,6 @@
 package com.example.sd2
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -29,6 +30,8 @@ class Game1Lev2Test : AppCompatActivity() {
     private lateinit var sadButton: Button
     private lateinit var angryButton: Button
     private lateinit var surprisedButton: Button
+
+    private lateinit var bgmMediaPlayer: MediaPlayer
 
     private var currentIndex = -1
     private var mistakes = 0
@@ -116,5 +119,11 @@ class Game1Lev2Test : AppCompatActivity() {
 
     private fun getImageName(imageResId: Int): String {
         return resources.getResourceEntryName(imageResId)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        bgmMediaPlayer.stop() // Stop background music when activity is stopped
+        bgmMediaPlayer.release()
     }
 }

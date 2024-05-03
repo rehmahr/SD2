@@ -2,10 +2,40 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CTDashboard">
+        <State />
+      </entry>
+      <entry key="Dashboard">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\mayad\.android\avd\Pixel_Tablet_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-03T10:18:52.114196400Z" />
+          <targetsSelectedWithDialog>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\mayad\.android\avd\Pixel_Tablet_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetsSelectedWithDialog>
+        </State>
+      </entry>
       <entry key="Game1Lev0">
         <State />
       </entry>
-      <entry key="MainActivity">
+      <entry key="Game1Lev2Test">
         <State />
       </entry>
     </value>
