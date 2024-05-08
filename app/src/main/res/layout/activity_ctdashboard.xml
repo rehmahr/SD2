@@ -18,7 +18,7 @@
         android:background="@drawable/rounded_corner_navigation_view"
         app:cardBackgroundColor="#00FFFFFF"
         app:cardCornerRadius="0dp"
-        app:cardElevation="20dp"
+        app:cardElevation="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -111,23 +111,42 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="898dp"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="898dp">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="58dp"
+                    android:fontFamily="@font/bungee_shade"
+                    android:shadowColor="@color/pink"
+                    android:shadowDx="-20"
+                    android:shadowDy="-2"
+                    android:shadowRadius="20"
+                    android:text="Your Students"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="48sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView17"
                     android:layout_width="800dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="190dp"
-                    android:layout_marginTop="120dp"
-                    android:layout_marginEnd="190dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="200dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/textView7">
 
                     <TableLayout
                         android:id="@+id/tableLayout"
@@ -152,19 +171,6 @@
                     </TableLayout>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="196dp"
-                    android:layout_marginEnd="830dp"
-                    android:text="Your Students"
-                    android:textColor="#FFFFFF"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/cardView17"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

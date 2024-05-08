@@ -1,5 +1,6 @@
 package com.example.sd2
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.widget.TableLayout
@@ -88,25 +89,49 @@ class CTDashboard : AppCompatActivity() {
             TableRow.LayoutParams.MATCH_PARENT,
             TableRow.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.setMargins(0, 8, 0, 8) // Add some vertical spacing between rows
+        layoutParams.setMargins(30, 10, 30, 10) // Add some vertical spacing between rows
         row.layoutParams = layoutParams
 
         val idTextView = TextView(this)
         idTextView.text = studentId.toString()
-        idTextView.setPadding(16, 8, 16, 8) // Add padding to the text view
+        idTextView.setPadding(60, 20, 10, 20) // Add padding to the text view
+        idTextView.textSize = 18.toFloat() // Set text size
+        idTextView.setTypeface(null, Typeface.BOLD) // Set text style to bold
 
         val nameTextView = TextView(this)
         nameTextView.text = studentName
-        nameTextView.setPadding(16, 8, 16, 8) // Add padding to the text view
+        nameTextView.setPadding(500, 20, 500, 20) // Add padding to the text view
+        nameTextView.textSize = 18.toFloat() // Set text size
+        nameTextView.setTypeface(null, Typeface.BOLD) // Set text style to bold
 
         val profileButton = Button(this)
         profileButton.text = "Go To Profile"
-        profileButton.setPadding(16, 8, 16, 8) // Add padding to the button
+        profileButton.setPadding(60, 0, 60, 0)
+
+        profileButton.setBackgroundColor(resources.getColor(R.color.purple))
+
+        profileButton.setTextColor(resources.getColor(android.R.color.white))
+        profileButton.setTypeface(null, Typeface.BOLD)
+
+        profileButton.setOnClickListener {
+            goToNextActivity(this, ProgressReport::class.java)
+        }
+
+        val separatorRow = TableRow(this)
+        val separatorLayoutParams = TableRow.LayoutParams(
+            TableRow.LayoutParams.MATCH_PARENT,
+            resources.getDimensionPixelSize(R.dimen.vertical_spacing) // Set height for vertical spacing
+        )
+        separatorRow.layoutParams = separatorLayoutParams
+
 
         row.addView(idTextView)
         row.addView(nameTextView)
         row.addView(profileButton)
 
         tableLayout.addView(row)
+        tableLayout.addView(separatorRow)
+
     }
+
 }
