@@ -119,7 +119,7 @@
                 android:layout_height="1150dp">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView20"
+                    android:id="@+id/game01"
                     android:layout_width="700dp"
                     android:layout_height="250dp"
                     android:layout_marginStart="94dp"
@@ -135,7 +135,7 @@
                         android:layout_height="match_parent">
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/cardView22"
+                            android:id="@+id/game01wa"
                             android:layout_width="280dp"
                             android:layout_height="180dp"
                             android:layout_marginStart="40dp"
@@ -177,6 +177,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/game01tt"
                             android:layout_width="280dp"
                             android:layout_height="180dp"
                             android:layout_marginTop="35dp"
@@ -223,7 +224,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView21"
+                    android:id="@+id/game02"
                     android:layout_width="700dp"
                     android:layout_height="250dp"
                     android:layout_marginStart="94dp"
@@ -232,13 +233,14 @@
                     app:cardElevation="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView20">
+                    app:layout_constraintTop_toBottomOf="@+id/game01">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/game02tt"
                             android:layout_width="280dp"
                             android:layout_height="180dp"
                             android:layout_marginTop="35dp"
@@ -248,7 +250,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" >
+                            app:layout_constraintVertical_bias="0.0">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
@@ -281,7 +283,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/cardView25"
+                            android:id="@+id/game02wa"
                             android:layout_width="280dp"
                             android:layout_height="180dp"
                             android:layout_marginStart="41dp"
@@ -327,7 +329,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView18"
+                    android:id="@+id/game03"
                     android:layout_width="700dp"
                     android:layout_height="250dp"
                     android:layout_marginStart="94dp"
@@ -336,14 +338,14 @@
                     app:cardElevation="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView21">
+                    app:layout_constraintTop_toBottomOf="@+id/game02">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/cardView27"
+                            android:id="@+id/game03wa"
                             android:layout_width="280dp"
                             android:layout_height="186dp"
                             android:layout_marginStart="40dp"
@@ -386,6 +388,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/game03tt"
                             android:layout_width="280dp"
                             android:layout_height="186dp"
                             android:layout_marginTop="35dp"
@@ -445,7 +448,7 @@
                     android:textColor="@color/purple"
                     android:textSize="30sp"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/cardView20"
+                    app:layout_constraintBottom_toTopOf="@+id/game01"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
@@ -462,10 +465,11 @@
                     android:textColor="@color/purple"
                     android:textSize="30sp"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/cardView21"
+                    app:layout_constraintBottom_toTopOf="@+id/game02"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
+                    android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bungee_shade"
@@ -478,8 +482,38 @@
                     android:textColor="@color/purple"
                     android:textSize="30sp"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/cardView18"
+                    app:layout_constraintBottom_toTopOf="@+id/game03"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="107dp"
+                    android:text="Disable"
+                    app:layout_constraintStart_toEndOf="@+id/game01"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="107dp"
+                    android:text="Disable"
+                    app:layout_constraintStart_toEndOf="@+id/game02"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="107dp"
+                    android:text="Disable"
+                    app:layout_constraintStart_toEndOf="@+id/game03"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

@@ -1,5 +1,6 @@
 package com.example.sd2
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
@@ -81,6 +82,12 @@ class CTDashboard : AppCompatActivity() {
         }
     }
 
+    private fun goToProgressReport(userId: Int) {
+        val intent = Intent(this, ProgressReport::class.java)
+        intent.putExtra("USER_ID", userId)
+        startActivity(intent)
+    }
+
     private fun addStudentToTable(studentId: Int, studentName: String) {
         val tableLayout = findViewById<TableLayout>(R.id.tableLayout)
 
@@ -114,7 +121,8 @@ class CTDashboard : AppCompatActivity() {
         profileButton.setTypeface(null, Typeface.BOLD)
 
         profileButton.setOnClickListener {
-            goToNextActivity(this, ProgressReport::class.java)
+            val userId = studentId // Assuming studentId corresponds to the user ID
+            goToProgressReport(userId)
         }
 
         val separatorRow = TableRow(this)
