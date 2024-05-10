@@ -7,6 +7,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.net.HttpURLConnection
+import java.net.URL
+
 class Game3Lev2 : AppCompatActivity() {
     private lateinit var buttons: List<ImageButton>
     private lateinit var cards: MutableList<MemoryCard>
@@ -14,6 +20,11 @@ class Game3Lev2 : AppCompatActivity() {
     private var indexOfSecondSelectedCard: Int? = null
     private var isClickable = true
     private var matchedPairs = 0 // Variable to keep track of matched pairs
+
+    private var mistakes = 0
+
+    private var startTime: Long = 0
+    private var endTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +74,48 @@ class Game3Lev2 : AppCompatActivity() {
         }
     }
 
+    private fun saveScoreToDatabase() {
+
+        endTime = System.currentTimeMillis()
+        val timeTaken = endTime - startTime
+
+        val minutes = (timeTaken / 1000) / 60
+        val seconds = (timeTaken / 1000) % 60
+
+        // Format time as mm:ss
+        val formattedTime = String.format("%02d:%02d", minutes, seconds)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val userID = (application as MyApp).userID
+                println(userID)
+                val gameID = 3 // Assuming gameID for game1 is 1
+                val levelID = 15 // Assuming levelID for level1 is 1
+
+                val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.doOutput = true
+                urlConnection.requestMethod = "POST"
+
+                // Construct POST data
+                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes&time=$formattedTime"
+                println(postData)
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
+
+                val responseCode = urlConnection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    // Score saved successfully
+                    println("Score saved successfully")
+                } else {
+                    // Error saving score
+                    println("Error saving score")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     private fun checkForMatch() {
         if (indexOfFirstSelectedCard != null && indexOfSecondSelectedCard != null) {
             val firstCard = cards[indexOfFirstSelectedCard!!]
@@ -95,6 +148,7 @@ class Game3Lev2 : AppCompatActivity() {
                 isClickable = true // Allow clicks again
             } else {
                 // No match
+                mistakes++;
                 Handler().postDelayed({
                     firstCard.isFaceUp = false
                     secondCard.isFaceUp = false

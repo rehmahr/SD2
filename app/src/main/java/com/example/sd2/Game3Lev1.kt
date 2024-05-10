@@ -11,6 +11,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.net.HttpURLConnection
+import java.net.URL
 
 data class DraggableEmotion(
     val imageViewId: Int,
@@ -19,6 +24,12 @@ data class DraggableEmotion(
 )
 
 class Game3Lev1 : AppCompatActivity() {
+
+    private var mistakes = 0
+
+    private var startTime: Long = 0
+    private var endTime: Long = 0
+
     private lateinit var emotionWordTextView: TextView
     private lateinit var faceGap: ImageView
     private lateinit var matchEmptyFace: ImageView
@@ -74,11 +85,54 @@ class Game3Lev1 : AppCompatActivity() {
                         }, 3000)
                     } else {
                         showMessage("Try again!")
+                        mistakes++;
                         draggedView.visibility = View.VISIBLE
                     }
                     true
                 }
                 else -> true
+            }
+        }
+    }
+
+    private fun saveScoreToDatabase() {
+
+        endTime = System.currentTimeMillis()
+        val timeTaken = endTime - startTime
+
+        val minutes = (timeTaken / 1000) / 60
+        val seconds = (timeTaken / 1000) % 60
+
+        // Format time as mm:ss
+        val formattedTime = String.format("%02d:%02d", minutes, seconds)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val userID = (application as MyApp).userID
+                println(userID)
+                val gameID = 3 // Assuming gameID for game1 is 1
+                val levelID = 14 // Assuming levelID for level1 is 1
+
+                val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.doOutput = true
+                urlConnection.requestMethod = "POST"
+
+                // Construct POST data
+                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes&time=$formattedTime"
+                println(postData)
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
+
+                val responseCode = urlConnection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    // Score saved successfully
+                    println("Score saved successfully")
+                } else {
+                    // Error saving score
+                    println("Error saving score")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
@@ -103,9 +157,12 @@ class Game3Lev1 : AppCompatActivity() {
         } else {
             // All emotions completed, navigate to Congratulations activity
             val intent = Intent(this, Congratulations::class.java)
+            intent.putExtra("CURRENT_LEVEL", "Game3Lev1")
             startActivity(intent)
 
-            intent.putExtra("CURRENT_LEVEL", "Game3Lev1")
+            saveScoreToDatabase()
+
+
 
             val progress = 50;
             val userID = (application as MyApp).userID

@@ -96,6 +96,8 @@ class Game2lev12 : AppCompatActivity() {
             val intent = Intent(this, Game2Lev13::class.java)
             startActivity(intent)
 
+            saveScoreToDatabase()
+
             val progress = 10;
             val userID = (application as MyApp).userID
 

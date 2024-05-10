@@ -2,8 +2,10 @@ package com.example.sd2
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -16,6 +18,12 @@ import java.net.URL
 
 
 class ProgressReport : AppCompatActivity() {
+
+    private lateinit var game1DisableButton: Button
+    private lateinit var game2DisableButton: Button
+    private lateinit var game3DisableButton: Button
+
+    private val gameStatusViewModel: GameStatusViewModel by viewModels()
     private fun getUserIdFromIntent(): Int {
         return intent.getIntExtra("USER_ID", -1) // -1 is the default value if USER_ID is not found
     }
@@ -32,6 +40,25 @@ class ProgressReport : AppCompatActivity() {
             Log.e("ProgressReport", "User ID not found in intent extras")
             showToast("User ID not found")
             finish()
+        }
+
+        game1DisableButton = findViewById(R.id.disableGame01)
+        game2DisableButton = findViewById(R.id.disableGame02)
+        game3DisableButton = findViewById(R.id.disableGame03)
+
+        game1DisableButton.setOnClickListener {
+            gameStatusViewModel.game1Enabled.value = false
+            // Update UI to reflect the disabled state
+        }
+
+        game2DisableButton.setOnClickListener {
+            gameStatusViewModel.game2Enabled.value = false
+            // Update UI to reflect the disabled state
+        }
+
+        game3DisableButton.setOnClickListener {
+            gameStatusViewModel.game3Enabled.value = false
+            // Update UI to reflect the disabled state
         }
     }
 
@@ -122,9 +149,11 @@ class ProgressReport : AppCompatActivity() {
                             val gameIds = listOf(1, 2, 3) // Assuming game IDs 1, 2, 3
                             runOnUiThread {
                                 gameIds.forEach { gameId ->
-                                    val totalWrongAnswers = jsonObject.optInt("$gameId.totalWrongAnswers", 0)
-                                    val totalTimeTaken = jsonObject.optInt("$gameId.totalTimeTaken", 0)
-                                    updateTextViews(gameId, totalWrongAnswers, totalTimeTaken)
+                                    val gameData = jsonObject.optJSONObject("$gameId")
+                                    val totalWrongAnswers = gameData?.optInt("totalWrongAnswers", 0)
+                                    val totalTimeTaken = gameData?.optString("totalTimeTaken", "00:00:00")
+                                    val formattedTime = formatTime(totalTimeTaken)
+                                    updateTextViews(gameId, totalWrongAnswers ?: 0, formattedTime)
                                 }
                             }
                         }
@@ -143,12 +172,25 @@ class ProgressReport : AppCompatActivity() {
         }
     }
 
-    private fun updateTextViews(gameId: Int, totalWrongAnswers: Int, totalTimeTaken: Int) {
+    private fun formatTime(time: String?): String {
+        if (time.isNullOrEmpty()) return "00:00" // Return default if time is null or empty
+        val parts = time.split(":")
+        if (parts.size >= 2) {
+            val minutes = parts[0].toIntOrNull() ?: 0
+            val seconds = parts[1].toIntOrNull() ?: 0
+            return String.format("%02d:%02d", minutes, seconds)
+        }
+        return "00:00" // Return default if time format is invalid
+    }
+
+
+
+    private fun updateTextViews(gameId: Int, totalWrongAnswers: Int, totalTimeTaken: String) {
         val textViewWrongAnswers = findViewById<TextView>(getTextViewId(gameId, "wrongAnswers"))
         val textViewTimeTaken = findViewById<TextView>(getTextViewId(gameId, "timeTaken"))
 
-        textViewWrongAnswers.text = "Total Wrong Answers: $totalWrongAnswers"
-        textViewTimeTaken.text = "Total Time Taken: $totalTimeTaken seconds"
+        textViewWrongAnswers.text = "$totalWrongAnswers"
+        textViewTimeTaken.text = "$totalTimeTaken"
     }
 
     private fun getTextViewId(gameId: Int, dataType: String): Int {
