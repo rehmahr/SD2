@@ -129,6 +129,11 @@ class Game3Lev2 : AppCompatActivity() {
     private fun goToCongratulationsActivity() {
         val intent = Intent(this, Congratulations2::class.java)
         startActivity(intent)
+
+        val progress = 50;
+        val userID = (application as MyApp).userID
+
+        saveProgressToDatabase(userID, 3, 15, progress)
         finish()
     }
 

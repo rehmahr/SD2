@@ -2,6 +2,7 @@ package com.example.sd2
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -59,6 +60,7 @@ class ProgressReport : AppCompatActivity() {
                         if (jsonObject.has("error")) {
                             // User not found in the table, handle this case
                             Log.e("ProgressReport", "User not found in the table")
+                            showToast("User not found")
                             runOnUiThread {
                                 changeCardViewsToGray()
                             }
@@ -71,6 +73,8 @@ class ProgressReport : AppCompatActivity() {
                                     updateCardView(getCardViewId(gameId), progress)
                                 }
                             }
+                            // Fetch additional data (total wrong answers and total time taken)
+                            fetchAdditionalData(userId)
                         }
                     } else {
                         // Response is not a JSON object, handle this case
@@ -84,6 +88,87 @@ class ProgressReport : AppCompatActivity() {
                 e.printStackTrace()
                 Log.e("ProgressReport", "Error fetching progress data: ${e.message}")
             }
+        }
+    }
+
+    private fun fetchAdditionalData(userId: Int) {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val url = URL("http://192.168.56.1/seniordes/progRepGet.php")
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.requestMethod = "POST"
+                urlConnection.doOutput = true
+
+                // Prepare POST data
+                val postData = "userID=$userId" // Construct POST data
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
+
+                // Get response
+                val responseCode = urlConnection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    val responseData = urlConnection.inputStream.bufferedReader().readText()
+
+                    // Check if response is valid JSON
+                    if (responseData.isNotEmpty() && responseData.startsWith("{")) {
+                        // Response is JSON object
+                        val jsonObject = JSONObject(responseData)
+
+                        if (jsonObject.has("error")) {
+                            // User not found in the table, handle this case
+                            Log.e("ProgressReport", "User not found in the table")
+                            showToast("User not found")
+                        } else {
+                            // Iterate over game IDs and update text views accordingly
+                            val gameIds = listOf(1, 2, 3) // Assuming game IDs 1, 2, 3
+                            runOnUiThread {
+                                gameIds.forEach { gameId ->
+                                    val totalWrongAnswers = jsonObject.optInt("$gameId.totalWrongAnswers", 0)
+                                    val totalTimeTaken = jsonObject.optInt("$gameId.totalTimeTaken", 0)
+                                    updateTextViews(gameId, totalWrongAnswers, totalTimeTaken)
+                                }
+                            }
+                        }
+                    } else {
+                        // Response is not a JSON object, handle this case
+                        Log.e("ProgressReport", "Invalid response format")
+                    }
+                } else {
+                    // HTTP error, handle this case
+                    Log.e("ProgressReport", "HTTP error code: $responseCode")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e("ProgressReport", "Error fetching additional data: ${e.message}")
+            }
+        }
+    }
+
+    private fun updateTextViews(gameId: Int, totalWrongAnswers: Int, totalTimeTaken: Int) {
+        val textViewWrongAnswers = findViewById<TextView>(getTextViewId(gameId, "wrongAnswers"))
+        val textViewTimeTaken = findViewById<TextView>(getTextViewId(gameId, "timeTaken"))
+
+        textViewWrongAnswers.text = "Total Wrong Answers: $totalWrongAnswers"
+        textViewTimeTaken.text = "Total Time Taken: $totalTimeTaken seconds"
+    }
+
+    private fun getTextViewId(gameId: Int, dataType: String): Int {
+        return when (gameId) {
+            1 -> when (dataType) {
+                "wrongAnswers" -> R.id.game01WrongAnswers
+                "timeTaken" -> R.id.game01TimeTaken
+                else -> throw IllegalArgumentException("Invalid data type")
+            }
+            2 -> when (dataType) {
+                "wrongAnswers" -> R.id.game02WrongAnswers
+                "timeTaken" -> R.id.game02TimeTaken
+                else -> throw IllegalArgumentException("Invalid data type")
+            }
+            3 -> when (dataType) {
+                "wrongAnswers" -> R.id.game03WrongAnswers
+                "timeTaken" -> R.id.game03TimeTaken
+                else -> throw IllegalArgumentException("Invalid data type")
+            }
+            else -> throw IllegalArgumentException("Invalid game ID")
         }
     }
 

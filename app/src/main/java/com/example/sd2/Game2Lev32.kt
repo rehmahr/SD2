@@ -33,7 +33,14 @@ class Game2Lev32 : AppCompatActivity() {
         }
 
         videoView.setOnCompletionListener {
-            goToNextActivity(this, Congratulations2::class.java)
+            val intent = Intent(this, Congratulations2::class.java)
+            startActivity(intent)
+
+            val progress = 10;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 2, 13, progress)
+            finish()
         }
     }
 

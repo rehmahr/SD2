@@ -38,7 +38,7 @@ class  Dashboard : ComponentActivity() {
         }
 
         game2_butt.setOnClickListener {
-            goToNextActivity(this, Game2Lev1::class.java)
+            goToNextActivity(this, Game2Lev0::class.java)
         }
 
         game3_butt.setOnClickListener {

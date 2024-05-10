@@ -34,8 +34,14 @@ class Game2Lev2 : AppCompatActivity() {
 
         videoView.setOnCompletionListener {
             val intent = Intent(this, Congratulations::class.java)
-            intent.putExtra("CURRENT_LEVEL", "Game2Lev2")
             startActivity(intent)
+
+            intent.putExtra("CURRENT_LEVEL", "Game2Lev2")
+
+            val progress = 10;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 2, 11, progress)
             finish()
 
         }

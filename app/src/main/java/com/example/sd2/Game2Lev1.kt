@@ -10,6 +10,11 @@ import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.net.HttpURLConnection
+import java.net.URL
 
 class Game2Lev1 : AppCompatActivity() {
     private lateinit var videoView: VideoView
@@ -18,6 +23,12 @@ class Game2Lev1 : AppCompatActivity() {
     private lateinit var angryButton: Button
     private lateinit var scaredButton: Button
     private lateinit var sadButton: Button
+
+    private var currentIndex = -1
+    private var mistakes = 0
+
+    private var startTime: Long = 0
+    private var endTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,10 +97,13 @@ class Game2Lev1 : AppCompatActivity() {
             val intent = Intent(this, Game2lev12::class.java)
             startActivity(intent)
 
-            val progress = 20;
+            saveScoreToDatabase()
+
+            val progress = 10;
             val userID = (application as MyApp).userID
 
-            saveProgressToDatabase(userID, 2, 1, progress)
+            saveProgressToDatabase(userID, 2, 7, progress)
+            finish()
         }
     }
 
@@ -115,6 +129,49 @@ class Game2Lev1 : AppCompatActivity() {
         } else {
             // Show toast message to try again
             Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show()
+            mistakes++;
+        }
+    }
+
+    private fun saveScoreToDatabase() {
+
+        endTime = System.currentTimeMillis()
+        val timeTaken = endTime - startTime
+
+        val minutes = (timeTaken / 1000) / 60
+        val seconds = (timeTaken / 1000) % 60
+
+        // Format time as mm:ss
+        val formattedTime = String.format("%02d:%02d", minutes, seconds)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val userID = (application as MyApp).userID
+                println(userID)
+                val gameID = 2 // Assuming gameID for game1 is 1
+                val levelID = 7 // Assuming levelID for level1 is 1
+
+                val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.doOutput = true
+                urlConnection.requestMethod = "POST"
+
+                // Construct POST data
+                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes&time=$formattedTime"
+                println(postData)
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
+
+                val responseCode = urlConnection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    // Score saved successfully
+                    println("Score saved successfully")
+                } else {
+                    // Error saving score
+                    println("Error saving score")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

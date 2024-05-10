@@ -16,6 +16,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class Game1Lev2Test : AppCompatActivity() {
+
+    private var startTime: Long = 0
+    private var endTime: Long = 0
+
     private val images = listOf(
         R.drawable.human_happy,
         R.drawable.human_sad,
@@ -94,22 +98,40 @@ class Game1Lev2Test : AppCompatActivity() {
     }
 
     private fun saveScoreToDatabase() {
+
+        endTime = System.currentTimeMillis()
+        val timeTaken = endTime - startTime
+
+        val minutes = (timeTaken / 1000) / 60
+        val seconds = (timeTaken / 1000) % 60
+
+        // Format time as mm:ss
+        val formattedTime = String.format("%02d:%02d", minutes, seconds)
+
         GlobalScope.launch(Dispatchers.IO) {
             try {
+                val userID = (application as MyApp).userID
+                println(userID)
+                val gameID = 1 // Assuming gameID for game1 is 1
+                val levelID = 2 // Assuming levelID for level1 is 1
+
                 val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.doOutput = true
                 urlConnection.requestMethod = "POST"
-                val postData: ByteArray = "mistakes=$mistakes".toByteArray(Charsets.UTF_8)
-                urlConnection.outputStream.write(postData)
+
+                // Construct POST data
+                val postData = "userID=$userID&gameID=$gameID&levelID=$levelID&mistakes=$mistakes&time=$formattedTime"
+                println(postData)
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
 
                 val responseCode = urlConnection.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     // Score saved successfully
-                    println("saved")
+                    println("Score saved successfully")
                 } else {
                     // Error saving score
-                    println("error")
+                    println("Error saving score")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

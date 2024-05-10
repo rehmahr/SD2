@@ -103,8 +103,16 @@ class Game3Lev1 : AppCompatActivity() {
         } else {
             // All emotions completed, navigate to Congratulations activity
             val intent = Intent(this, Congratulations::class.java)
-            intent.putExtra("CURRENT_LEVEL", "Game3Lev1")
             startActivity(intent)
+
+            intent.putExtra("CURRENT_LEVEL", "Game3Lev1")
+
+            val progress = 50;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 3, 14, progress)
+
+
             finish()
         }
     }
