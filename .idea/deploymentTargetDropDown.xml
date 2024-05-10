@@ -2,20 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-<<<<<<< Updated upstream
-      <entry key="Dashboard">
-        <State />
-      </entry>
-      <entry key="Game1Lev2Test">
-        <State />
-      </entry>
-      <entry key="Game3Lev1">
-=======
-      <entry key="app">
-        <State />
-      </entry>
       <entry key="homepage">
->>>>>>> Stashed changes
         <State />
       </entry>
     </value>
