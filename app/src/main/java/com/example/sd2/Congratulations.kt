@@ -50,10 +50,10 @@ class Congratulations : AppCompatActivity() {
         }
     }
 
-    override fun onStop() {
+    override fun onPause() {
         // Pause and release MediaPlayer when the activity is stopped
         mediaPlayer.pause()
         mediaPlayer.release()
-        super.onStop()
+        super.onPause()
     }
 }
