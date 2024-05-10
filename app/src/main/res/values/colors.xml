@@ -10,4 +10,7 @@
     <color name="bbpink">#FAA4BD</color>
     <color name="beige">#FAE3C6</color>
     <color name="Orangy">#FFB562</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="dark_gray">#777777</color>
+
 </resources>
