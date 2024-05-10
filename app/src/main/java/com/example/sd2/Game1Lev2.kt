@@ -69,10 +69,10 @@ class Game1Lev2 : AppCompatActivity() {
         updateEmotion()
 
         //Initialize background music
-        bgmMediaPlayer = MediaPlayer.create(this, R.raw.bgm1)
-        bgmMediaPlayer.isLooping = true
-        bgmMediaPlayer.setVolume(0.05f, 0.05f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
-        bgmMediaPlayer.start()
+      //  bgmMediaPlayer = MediaPlayer.create(this, R.raw.bgm1)
+      //  bgmMediaPlayer.isLooping = true
+      //  bgmMediaPlayer.setVolume(0.05f, 0.05f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+      //  bgmMediaPlayer.start()
     }
 
     private fun showNextEmotion() {

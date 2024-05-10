@@ -155,9 +155,9 @@ class Game1Lev1Test : AppCompatActivity() {
         return resources.getResourceEntryName(imageResId)
     }
 
-    override fun onPause() {
-        bgmMediaPlayer.stop() // Stop background music when activity is stopped
-        bgmMediaPlayer.release()
-        super.onPause()
-    }
+    // override fun onPause() {
+    //    bgmMediaPlayer.stop() // Stop background music when activity is stopped
+    //    bgmMediaPlayer.release()
+    //    super.onPause()
+    //}
 }

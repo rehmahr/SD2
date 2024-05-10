@@ -17,7 +17,6 @@ class Congratulations : AppCompatActivity() {
 
         // Initialize MediaPlayer with the background music
         mediaPlayer = MediaPlayer.create(this, R.raw.kids_cheering)
-        mediaPlayer.isLooping = true
         mediaPlayer.start()
 
         val currentLevel = intent.getStringExtra("CURRENT_LEVEL")
@@ -27,8 +26,8 @@ class Congratulations : AppCompatActivity() {
         val nextLevelButton = findViewById<Button>(R.id.buttonNext)
         nextLevelButton.setOnClickListener {
             // Stop and release MediaPlayer when the activity navigates away
-            mediaPlayer.stop()
-            mediaPlayer.release()
+            // mediaPlayer.stop()
+            // mediaPlayer.release()
 
             val nextLevelIntent = when (nextLevel) {
                 "Congratulations" -> Intent(this, Congratulations::class.java)
@@ -50,10 +49,10 @@ class Congratulations : AppCompatActivity() {
         }
     }
 
-    override fun onPause() {
+    override fun onStop() {
         // Pause and release MediaPlayer when the activity is stopped
         mediaPlayer.pause()
         mediaPlayer.release()
-        super.onPause()
+        super.onStop()
     }
 }
