@@ -85,7 +85,11 @@ class Game2Lev1 : AppCompatActivity() {
         continueButton.setOnClickListener {
             val intent = Intent(this, Game2lev12::class.java)
             startActivity(intent)
-            finish()
+
+            val progress = 20;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 2, 1, progress)
         }
     }
 
