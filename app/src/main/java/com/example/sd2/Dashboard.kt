@@ -37,7 +37,7 @@ class  Dashboard : ComponentActivity() {
         game2_butt = findViewById(R.id.game02Go)
         game3_butt = findViewById(R.id.game03Go)
         cardView2 = findViewById(R.id.cardView11)
-        cardView3 = findViewById(R.id.cardView22)
+        cardView3 = findViewById(R.id.cardView23)
 
         // Initially disable buttons for game 2 and game 3 and change color
         disableButton(game2_butt, cardView2)
@@ -148,14 +148,26 @@ class  Dashboard : ComponentActivity() {
     // Function to enable a button and change its color
     private fun enableButton(button: Button, cardView: CardView) {
         button.isEnabled = true
-        button.setBackgroundColor(Color.parseColor("#666666")) // Dark gray
-        cardView.setCardBackgroundColor(Color.parseColor("#CCCCCC")) // Light gray
+        val buttonBackgroundColor = when (button.id) {
+            R.id.game02Go -> getColor(R.color.game3_button_color)
+            R.id.game03Go -> getColor(R.color.game3_button_color)
+            else -> getColor(android.R.color.transparent) // Default to transparent color
+        }
+        button.setBackgroundColor(buttonBackgroundColor)
+
+        // Get the original background color of the card view from the XML
+        val cardViewBackgroundColor = when (cardView.id) {
+            R.id.cardView23 -> getColor(R.color.game2_cardview_color)
+            R.id.cardView9 -> getColor(R.color.game3_cardview_color)
+            else -> getColor(android.R.color.transparent) // Default to transparent color
+        }
+        cardView.setCardBackgroundColor(cardViewBackgroundColor)
     }
 
     // Function to disable a button and change its color
     private fun disableButton(button: Button, cardView: CardView) {
         button.isEnabled = false
-        button.setBackgroundColor(Color.parseColor("#CCCCCC")) // Light gray
-        cardView.setCardBackgroundColor(Color.parseColor("#E0E0E0")) // Darker gray
+        button.setBackgroundColor(Color.parseColor("#E0E0E0")) // Light gray
+        cardView.setCardBackgroundColor(Color.parseColor("#CCCCCC")) // Darker gray
     }
 }
