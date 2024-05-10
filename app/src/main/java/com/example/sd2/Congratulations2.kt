@@ -11,7 +11,7 @@ import android.media.MediaPlayer
 class Congratulations2 : AppCompatActivity() {
     private lateinit var dashButton: Button
 
-    private lateinit var bgmMediaPlayer: MediaPlayer
+    // private lateinit var bgmMediaPlayer: MediaPlayer
     private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,12 +30,11 @@ class Congratulations2 : AppCompatActivity() {
         }
     }
 
-    override fun onPause() {
+    override fun onStop() {
+        super.onStop()
         // Pause and release MediaPlayer when the activity is stopped
         mediaPlayer.stop()
         mediaPlayer.release()
-        bgmMediaPlayer.stop() // Stop background music when activity is stopped
-        bgmMediaPlayer.release()
-        super.onPause()
+       // bgmMediaPlayer.stop() // Stop background music when activity is stopped
     }
 }

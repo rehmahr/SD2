@@ -16,7 +16,7 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 
-class Dashboard : ComponentActivity() {
+class  Dashboard : ComponentActivity() {
 
     private lateinit var game1_butt: Button
     private lateinit var game2_butt: Button
