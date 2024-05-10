@@ -15,6 +15,6 @@
 
     <color name="game2_cardview_color">#D490DF</color>
     <color name="game3_cardview_color">#FE9DB0</color>
-    <color name="game3_button_color">FF6750A3</color>
+    <color name="game3_button_color">#6750A3</color>
 
 </resources>

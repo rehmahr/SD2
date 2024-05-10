@@ -148,17 +148,12 @@ class  Dashboard : ComponentActivity() {
     // Function to enable a button and change its color
     private fun enableButton(button: Button, cardView: CardView) {
         button.isEnabled = true
-        val buttonBackgroundColor = when (button.id) {
-            R.id.game02Go -> getColor(R.color.game3_button_color)
-            R.id.game03Go -> getColor(R.color.game3_button_color)
-            else -> getColor(android.R.color.transparent) // Default to transparent color
-        }
-        button.setBackgroundColor(buttonBackgroundColor)
+        button.backgroundTintList = null
 
         // Get the original background color of the card view from the XML
         val cardViewBackgroundColor = when (cardView.id) {
-            R.id.cardView23 -> getColor(R.color.game2_cardview_color)
-            R.id.cardView9 -> getColor(R.color.game3_cardview_color)
+            R.id.cardView11 -> getColor(R.color.game2_cardview_color)
+            R.id.cardView23 -> getColor(R.color.game3_cardview_color)
             else -> getColor(android.R.color.transparent) // Default to transparent color
         }
         cardView.setCardBackgroundColor(cardViewBackgroundColor)
