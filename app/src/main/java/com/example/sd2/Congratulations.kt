@@ -1,18 +1,24 @@
 package com.example.sd2
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class Congratulations : AppCompatActivity() {
+    private lateinit var mediaPlayer: MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_congratulations)
+
+        // Initialize MediaPlayer with the background music
+        mediaPlayer = MediaPlayer.create(this, R.raw.kids_cheering)
+        mediaPlayer.isLooping = true
+        mediaPlayer.start()
 
         val currentLevel = intent.getStringExtra("CURRENT_LEVEL")
 
@@ -20,6 +26,10 @@ class Congratulations : AppCompatActivity() {
 
         val nextLevelButton = findViewById<Button>(R.id.buttonNext)
         nextLevelButton.setOnClickListener {
+            // Stop and release MediaPlayer when the activity navigates away
+            mediaPlayer.stop()
+            mediaPlayer.release()
+
             val nextLevelIntent = when (nextLevel) {
                 "Congratulations" -> Intent(this, Congratulations::class.java)
                 else -> Intent(this, Class.forName("com.example.sd2.$nextLevel"))
@@ -36,8 +46,14 @@ class Congratulations : AppCompatActivity() {
             "Game2Lev14" -> "Game2Lev2"
             "Game2Lev2" -> "Game2Lev31"
             "Game3Lev1" -> "Game3Lev2"
-
             else -> ""
         }
+    }
+
+    override fun onStop() {
+        // Pause and release MediaPlayer when the activity is stopped
+        mediaPlayer.pause()
+        mediaPlayer.release()
+        super.onStop()
     }
 }

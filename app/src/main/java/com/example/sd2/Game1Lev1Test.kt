@@ -156,8 +156,8 @@ class Game1Lev1Test : AppCompatActivity() {
     }
 
     override fun onStop() {
-        super.onStop()
         bgmMediaPlayer.stop() // Stop background music when activity is stopped
         bgmMediaPlayer.release()
+        super.onStop()
     }
 }
