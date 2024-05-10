@@ -24,7 +24,7 @@ class Game1Lev2 : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
 
-    private lateinit var bgmMediaPlayer: MediaPlayer
+   // private lateinit var bgmMediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 class Game1Lev0 : ComponentActivity() {
 
-    private lateinit var bgmMediaPlayer: MediaPlayer
+    // private lateinit var bgmMediaPlayer: MediaPlayer
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

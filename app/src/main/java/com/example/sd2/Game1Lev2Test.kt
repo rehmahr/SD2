@@ -31,7 +31,7 @@ class Game1Lev2Test : AppCompatActivity() {
     private lateinit var angryButton: Button
     private lateinit var surprisedButton: Button
 
-    private lateinit var bgmMediaPlayer: MediaPlayer
+   // private lateinit var bgmMediaPlayer: MediaPlayer
 
     private var currentIndex = -1
     private var mistakes = 0
@@ -121,9 +121,9 @@ class Game1Lev2Test : AppCompatActivity() {
         return resources.getResourceEntryName(imageResId)
     }
 
-    override fun onPause() {
-        bgmMediaPlayer.stop() // Stop background music when activity is stopped
-        bgmMediaPlayer.release()
-        super.onPause()
-     }
+   // override fun onPause() {
+  //      bgmMediaPlayer.stop() // Stop background music when activity is stopped
+   //     bgmMediaPlayer.release()
+   //     super.onPause()
+   //  }
 }
