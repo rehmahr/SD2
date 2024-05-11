@@ -21,6 +21,7 @@ class Game2Lev0 : AppCompatActivity() {
 
         videoView = findViewById(R.id.videoView)
 
+        showContinueButton()
 
         // Directly specify the video file name within the URI string
         val offlineUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.happy_lev0}")
@@ -29,7 +30,7 @@ class Game2Lev0 : AppCompatActivity() {
         setupMediaControls()
 
         videoView.setOnCompletionListener {
-            showContinueButton()
+
         }
 
         val imageButton5 = findViewById<ImageButton>(R.id.home_button)

@@ -93,7 +93,7 @@
             android:shadowDx="-20"
             android:shadowDy="-2"
             android:shadowRadius="20"
-            android:text="happy"
+            android:text="SAD"
             android:textAlignment="center"
             android:textColor="@color/purple"
             android:textSize="48sp"

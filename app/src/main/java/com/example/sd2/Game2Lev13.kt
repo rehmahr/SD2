@@ -40,13 +40,15 @@ class Game2Lev13 : AppCompatActivity() {
         scaredButton = findViewById(R.id.scared_ans)
         sadButton = findViewById(R.id.sad_ans)
 
+        showContinueButton()
+
         val offlineUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.sad_lev1}")
         videoView.setVideoURI(offlineUri)
 
         setupMediaControls()
 
         videoView.setOnCompletionListener {
-            showContinueButton()
+
         }
 
         happyButton.setOnClickListener { checkAnswer("happy") }

@@ -17,10 +17,11 @@ class Game2Lev01 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game2_lev0)
+        setContentView(R.layout.activity_game2_lev01)
 
         videoView = findViewById(R.id.videoView)
 
+        showContinueButton()
 
         // Directly specify the video file name within the URI string
         val offlineUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.sad_level0}")
@@ -29,7 +30,7 @@ class Game2Lev01 : AppCompatActivity() {
         setupMediaControls()
 
         videoView.setOnCompletionListener {
-            showContinueButton()
+
         }
 
         val imageButton5 = findViewById<ImageButton>(R.id.home_button)

@@ -22,6 +22,8 @@ class Game2Lev31 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game2_lev31)
 
+        showContinueButton()
+
         videoView = findViewById(R.id.videoView)
         happyButton = findViewById(R.id.happy_ans)
         angryButton = findViewById(R.id.angry_ans)
@@ -34,7 +36,7 @@ class Game2Lev31 : AppCompatActivity() {
         setupMediaControls()
 
         videoView.setOnCompletionListener {
-            showContinueButton()
+
         }
 
         val imageButton5 = findViewById<ImageButton>(R.id.home_button)

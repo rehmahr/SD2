@@ -3,6 +3,7 @@ package com.example.sd2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.VideoView
@@ -15,6 +16,8 @@ class Game2Lev2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game2_lev2)
+
+        showContinueButton()
 
         videoView = findViewById(R.id.videoView)
 
@@ -45,6 +48,22 @@ class Game2Lev2 : AppCompatActivity() {
             saveProgressToDatabase(userID, 2, 11, progress)
             finish()
 
+        }
+    }
+
+    private fun showContinueButton() {
+        continueButton = findViewById(R.id.continueBtn)
+        continueButton.visibility = View.VISIBLE
+
+        continueButton.setOnClickListener {
+            val intent = Intent(this, Congratulations::class.java)
+            startActivity(intent)
+
+            val progress = 10;
+            val userID = (application as MyApp).userID
+
+            saveProgressToDatabase(userID, 2, 9, progress)
+            finish()
         }
     }
 

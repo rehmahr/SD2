@@ -34,6 +34,8 @@ class Game2Lev1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game2_lev1)
 
+        showContinueButton()
+
         videoView = findViewById(R.id.videoView)
         happyButton = findViewById(R.id.happy_ans)
         angryButton = findViewById(R.id.angry_ans)
@@ -47,7 +49,7 @@ class Game2Lev1 : AppCompatActivity() {
         setupMediaControls()
 
         videoView.setOnCompletionListener {
-            showContinueButton()
+
         }
 
         happyButton.setOnClickListener { checkAnswer("happy") }
