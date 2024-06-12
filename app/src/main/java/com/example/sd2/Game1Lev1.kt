@@ -1,6 +1,7 @@
 package com.example.sd2
 
 import android.media.MediaPlayer
+import android.media.PlaybackParams
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -17,9 +18,9 @@ class Game1Lev1 : ComponentActivity() {
     private lateinit var imageView: ImageView
     private lateinit var textView: TextView
     private lateinit var proceedButton: Button
-   // private lateinit var bgmMediaPlayer: MediaPlayer // Add this line
+    // private lateinit var bgmMediaPlayer: MediaPlayer // Add this line
 
-    private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised")
+    private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised", "Disgust", "Fear")
     private var currentIndex = 0
     private var emotionsVisited = 0
 
@@ -58,7 +59,7 @@ class Game1Lev1 : ComponentActivity() {
         proceedButton.setOnClickListener {
             goToNextActivity(this, Game1Lev1Test::class.java)
 
-            val progress = 10;
+            val progress = 10
             val userID = (application as MyApp).userID
 
             saveProgressToDatabase(userID, 1, 1, progress)
@@ -68,11 +69,10 @@ class Game1Lev1 : ComponentActivity() {
         updateEmotion()
 
         // Initialize background music
-     //   bgmMediaPlayer = MediaPlayer.create(this, R.raw.bgm1)
-     //   bgmMediaPlayer.isLooping = true
-     //   bgmMediaPlayer.setVolume(0.05f, 0.05f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
-     //   bgmMediaPlayer.start()
-
+        //   bgmMediaPlayer = MediaPlayer.create(this, R.raw.bgm1)
+        //   bgmMediaPlayer.isLooping = true
+        //   bgmMediaPlayer.setVolume(0.05f, 0.05f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+        //   bgmMediaPlayer.start()
     }
 
     private fun showNextEmotion() {
@@ -90,7 +90,6 @@ class Game1Lev1 : ComponentActivity() {
     }
 
     private fun updateEmotion() {
-
         val emotion = emotions[currentIndex]
         val drawableId = resources.getIdentifier(emotion.toLowerCase(), "drawable", packageName)
         imageView.setImageResource(drawableId)
@@ -108,6 +107,12 @@ class Game1Lev1 : ComponentActivity() {
         mediaPlayer?.release() // Release previous MediaPlayer instance
         val audioResourceId = resources.getIdentifier(emotion.toLowerCase() + "_audio", "raw", packageName)
         mediaPlayer = MediaPlayer.create(this, audioResourceId)
+
+        // Set playback speed
+        val playbackParams = PlaybackParams()
+        playbackParams.speed = 0.75f // Set the speed to 0.5 to slow down the audio
+        mediaPlayer?.playbackParams = playbackParams
+
         mediaPlayer?.setVolume(1.5f, 1.5f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
         mediaPlayer?.start()
     }
@@ -124,7 +129,7 @@ class Game1Lev1 : ComponentActivity() {
         super.onStop()
         mediaPlayer?.stop()
         mediaPlayer?.release()
-     //   bgmMediaPlayer.stop() // Stop background music when activity is stopped
-     //   bgmMediaPlayer.release()
+        //   bgmMediaPlayer.stop() // Stop background music when activity is stopped
+        //   bgmMediaPlayer.release()
     }
 }

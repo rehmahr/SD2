@@ -203,8 +203,8 @@
                 android:id="@+id/angryButt"
                 android:layout_width="120dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginBottom="37dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="28dp"
                 android:backgroundTint="#DF7F99"
                 android:text="Angry"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -214,8 +214,8 @@
                 android:id="@+id/happyButt"
                 android:layout_width="120dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="92dp"
-                android:layout_marginBottom="37dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="28dp"
                 android:backgroundTint="#DF7F99"
                 android:text="Happy"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -225,8 +225,8 @@
                 android:id="@+id/sadButt"
                 android:layout_width="120dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginBottom="37dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="28dp"
                 android:backgroundTint="#DF7F99"
                 android:text="Sad"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -236,14 +236,34 @@
                 android:id="@+id/surprisedButt"
                 android:layout_width="120dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginEnd="93dp"
-                android:layout_marginBottom="37dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="28dp"
                 android:backgroundTint="#DF7F99"
                 android:text="Surprised"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/angryButt" />
+
+            <Button
+                android:id="@+id/disgustButt"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="28dp"
+                android:backgroundTint="#DF7F99"
+                android:text="Disgust"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/surprisedButt" />
+
+            <Button
+                android:id="@+id/fearButt"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="28dp"
+                android:backgroundTint="#DF7F99"
+                android:text="Fear"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/disgustButt" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

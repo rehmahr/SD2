@@ -2,6 +2,7 @@ package com.example.sd2
 
 import android.content.Intent
 import android.media.MediaPlayer
+import android.media.PlaybackParams
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -29,7 +30,9 @@ class Game1Lev0 : ComponentActivity() {
         val imageButton2 = findViewById<ImageButton>(R.id.imageButton2)
         val imageButton3 = findViewById<ImageButton>(R.id.imageButton3)
         val imageButton4 = findViewById<ImageButton>(R.id.imageButton4)
-        val imageButton5 = findViewById<ImageButton>(R.id.home_button)
+        val imageButton5 = findViewById<ImageButton>(R.id.imageButton5)
+        val imageButton6 = findViewById<ImageButton>(R.id.imageButton6)
+        val imageButton7 = findViewById<ImageButton>(R.id.home_button)
         val nextButton = findViewById<Button>(R.id.scaredans)
 
         imageButton1.setOnClickListener {
@@ -53,6 +56,16 @@ class Game1Lev0 : ComponentActivity() {
         }
 
         imageButton5.setOnClickListener {
+            findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.disgust)
+            playSound(R.raw.disgust_audio)
+        }
+
+        imageButton6.setOnClickListener {
+            findViewById<ImageView>(R.id.imageView).setImageResource(R.drawable.fear)
+            playSound(R.raw.fear_audio)
+        }
+
+        imageButton7.setOnClickListener {
             val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
         }
@@ -76,7 +89,13 @@ class Game1Lev0 : ComponentActivity() {
 
     private fun playSound(audioResource: Int) {
         val mediaPlayer = MediaPlayer.create(this, audioResource)
-        mediaPlayer?.setVolume(1.5f, 1.5f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+        mediaPlayer?.setVolume(2.5f, 2.5f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+
+        // Set playback speed
+        val playbackParams = PlaybackParams()
+        playbackParams.speed = 0.75f // Set the speed to 0.5 to slow down the audio
+        mediaPlayer.playbackParams = playbackParams
+
         mediaPlayer.start()
         mediaPlayer.setOnCompletionListener {
             // Release MediaPlayer when playback is completed
