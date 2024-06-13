@@ -1,7 +1,10 @@
 package com.example.sd2
 
 import android.media.MediaPlayer
+import android.media.PlaybackParams
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -24,7 +27,10 @@ class Game1Lev2Test : AppCompatActivity() {
         R.drawable.human_happy,
         R.drawable.human_sad,
         R.drawable.human_angry,
-        R.drawable.human_surprised
+        R.drawable.human_surprised,
+        R.drawable.human_disgust,
+        R.drawable.human_fear
+
     ).shuffled()
 
     private lateinit var gamePanel: View
@@ -34,6 +40,9 @@ class Game1Lev2Test : AppCompatActivity() {
     private lateinit var sadButton: Button
     private lateinit var angryButton: Button
     private lateinit var surprisedButton: Button
+    private lateinit var disgustButton: Button
+    private lateinit var fearButton: Button
+
 
    // private lateinit var bgmMediaPlayer: MediaPlayer
 
@@ -58,21 +67,66 @@ class Game1Lev2Test : AppCompatActivity() {
         sadButton = findViewById(R.id.sadButt)
         angryButton = findViewById(R.id.angryButt)
         surprisedButton = findViewById(R.id.surprisedButt)
+        disgustButton = findViewById(R.id.disgustButt)
+        fearButton = findViewById(R.id.fearButt)
 
         // Start game
         nextImage()
 
         // Set click listeners
-        happyButton.setOnClickListener { checkAnswer("human_happy") }
-        sadButton.setOnClickListener { checkAnswer("human_sad") }
-        angryButton.setOnClickListener { checkAnswer("human_angry") }
-        surprisedButton.setOnClickListener { checkAnswer("human_surprised") }
+        happyButton.setOnClickListener {
+            checkAnswer("human_happy")
+            playSound(R.raw.happy_audio)
+        }
+        sadButton.setOnClickListener {
+            checkAnswer("human_sad")
+            playSound(R.raw.sad_audio)
+        }
+        angryButton.setOnClickListener {
+            checkAnswer("human_angry")
+            playSound(R.raw.angry_audio)
+        }
+        surprisedButton.setOnClickListener {
+            checkAnswer("human_surprised")
+            playSound(R.raw.surprised_audio)
+        }
+        disgustButton.setOnClickListener {
+            checkAnswer("human_disgust")
+            playSound(R.raw.disgust_audio)
+        }
+        fearButton.setOnClickListener {
+            checkAnswer("human_fear")
+            playSound(R.raw.fear_audio)
+        }
+    }
+
+    private fun playSound(audioResource: Int) {
+        val mediaPlayer = MediaPlayer.create(this, audioResource)
+        mediaPlayer?.setVolume(2.5f, 2.5f) // Set the volume level here (0.5f for half volume, 1.0f is full volume)
+
+        // Set playback speed
+        val playbackParams = PlaybackParams()
+        playbackParams.speed = 1f // Set the speed to 0.5 to slow down the audio
+        mediaPlayer.playbackParams = playbackParams
+
+        mediaPlayer.start()
+        mediaPlayer.setOnCompletionListener {
+            // Release MediaPlayer when playback is completed
+            it.release()
+        }
     }
 
     private fun nextImage() {
+        val delayMillis = 1000L // 1 second delay
+
+        // Get the next image resource
         currentIndex = (currentIndex + 1) % images.size
         val imageResource = images[currentIndex]
-        imageView.setImageResource(imageResource)
+
+        // Show the next image after the delay
+        Handler(Looper.getMainLooper()).postDelayed({
+            imageView.setImageResource(imageResource)
+        }, delayMillis)
     }
 
     private fun checkAnswer(guess: String) {

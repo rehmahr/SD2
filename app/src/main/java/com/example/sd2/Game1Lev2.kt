@@ -18,7 +18,7 @@ class Game1Lev2 : AppCompatActivity() {
     private lateinit var textView: TextView
     private lateinit var proceedButton: Button
 
-    private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised")
+    private val emotions = arrayOf("Happy", "Sad", "Angry", "Surprised", "Disgust","Fear")
     private var currentIndex = 0
     private var emotionsVisited = 0
 
