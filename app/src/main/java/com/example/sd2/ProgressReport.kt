@@ -65,7 +65,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchProgressData(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.56.1/seniordes/progCalc.php")
+                val url = URL("http://192.168.0.192/seniordes/progCalc.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -218,7 +218,7 @@ class ProgressReport : AppCompatActivity() {
         return when (gameId) {
             1 -> R.id.game01
             2 -> R.id.game02
-            3 -> R.id.game03
+            3 -> R.id.overallScores
             else -> throw IllegalArgumentException("Invalid game ID")
         }
     }
@@ -235,7 +235,7 @@ class ProgressReport : AppCompatActivity() {
 
     private fun changeCardViewsToGray() {
         val grayColor = ContextCompat.getColor(this, android.R.color.darker_gray)
-        val gameIds = listOf(R.id.game01, R.id.game02, R.id.game03) // Assuming game IDs 1, 2, 3
+        val gameIds = listOf(R.id.game01, R.id.game02, R.id.overallScores) // Assuming game IDs 1, 2, 3
         runOnUiThread {
             gameIds.forEach { gameId ->
                 findViewById<CardView>(gameId)?.setCardBackgroundColor(grayColor)

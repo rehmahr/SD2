@@ -83,7 +83,7 @@ class CTDashboard : AppCompatActivity() {
     }
 
     private fun goToProgressReport(userId: Int) {
-        val intent = Intent(this, ProgressReport::class.java)
+        val intent = Intent(this, ProgChart::class.java)
         intent.putExtra("USER_ID", userId)
         startActivity(intent)
     }

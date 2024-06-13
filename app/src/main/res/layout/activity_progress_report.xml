@@ -329,7 +329,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/game03"
+                    android:id="@+id/overallScores"
                     android:layout_width="700dp"
                     android:layout_height="250dp"
                     android:layout_marginStart="94dp"
@@ -482,7 +482,7 @@
                     android:textColor="@color/purple"
                     android:textSize="30sp"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/game03"
+                    app:layout_constraintBottom_toTopOf="@+id/overallScores"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
@@ -512,7 +512,7 @@
                     android:layout_marginStart="44dp"
                     android:layout_marginTop="107dp"
                     android:text="Disable"
-                    app:layout_constraintStart_toEndOf="@+id/game03"
+                    app:layout_constraintStart_toEndOf="@+id/overallScores"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
