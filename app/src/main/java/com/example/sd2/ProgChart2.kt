@@ -14,11 +14,11 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 
-class ProgChart : AppCompatActivity() {
+class ProgChart2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_prog_chart1)
+        setContentView(R.layout.activity_prog_chart2)
 
 
         val imageButton7 = findViewById<ImageButton>(R.id.home_button)
@@ -30,22 +30,22 @@ class ProgChart : AppCompatActivity() {
 
 
         // Sample data
-        val studentName = "Sami Abdallah"
+        val studentName = "Maya Jones"
         val scoresGame1 = listOf(
-            Entry(1f, 40f), // Game 1 Day 1
+            Entry(1f, 30f), // Game 1 Day 1
             Entry(2f, 61f), // Game 1 Day 2
-            Entry(3f, 61f)  // Game 1 Day 3
+            Entry(3f, 89f)  // Game 1 Day 3
         )
 
         val scoresGame2 = listOf(
-            Entry(1f, 76f), // Game 2 Day 1
-            Entry(2f, 80f), // Game 2 Day 2
-            Entry(3f, 85f)  // Game 2 Day 3
+            Entry(1f, 50f), // Game 2 Day 1
+            Entry(2f, 100f), // Game 2 Day 2
+            Entry(3f, 100f)  // Game 2 Day 3
         )
 
         val scoresGame3 = listOf(
-            Entry(1f, 74f), // Game 3 Day 1
-            Entry(2f, 70f), // Game 3 Day 2
+            Entry(1f, 87f), // Game 3 Day 1
+            Entry(2f, 91f), // Game 3 Day 2
             Entry(3f, 95f)  // Game 3 Day 3
         )
 
