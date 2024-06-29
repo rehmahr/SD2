@@ -8,8 +8,9 @@
     android:background="#FED98E"
     tools:context=".ProgChart">
 
+    <!-- Navigation View -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView8"
+        android:id="@+id/cardViewNavigation"
         android:layout_width="85dp"
         android:layout_height="500dp"
         android:layout_marginStart="1dp"
@@ -35,7 +36,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="20dp"
-
                 android:background="@drawable/more_round"
                 android:elevation="60dp"
                 android:visibility="visible"
@@ -45,7 +45,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible">
-
 
                 <ImageButton
                     android:id="@+id/home_button"
@@ -99,168 +98,164 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Scroll View for Content -->
     <ScrollView
-        android:layout_width="1184dp"
-        android:layout_height="945dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView8"
+        app:layout_constraintStart_toEndOf="@+id/cardViewNavigation"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Main Content Layout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Container for Overall Scores -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1846dp">
+                android:layout_height="wrap_content">
 
+                <!-- CardView for Overall Scores -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/overallScores"
-                    android:layout_width="1017dp"
+                    android:id="@+id/cardViewOverallScores"
+                    android:layout_width="0dp"
                     android:layout_height="217dp"
-                    android:layout_marginStart="94dp"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginEnd="94dp"
-                    app:cardElevation="20dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.333"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8">
+                    app:layout_constraintTop_toTopOf="parent">
 
+                    <!-- TextView for Overall Scores Title -->
                     <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="387dp"
-                        android:layout_height="91dp"
+                        android:id="@+id/textViewOverallScoresTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/bungee_inline"
-                        android:text=" Overall Scores"
+                        android:text="Overall Scores"
                         android:textAlignment="center"
-                        android:textSize="34sp"
-                        android:translationX="315dp" />
+                        android:textColor="@color/purple"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <!-- TextViews for Game Scores -->
                     <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="105dp"
-                        android:layout_height="74dp"
+                        android:id="@+id/textViewGame1Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/bungee"
                         android:text="Game 1"
                         android:textAlignment="center"
-                        android:textSize="24sp"
-                        android:translationX="250dp"
-                        android:translationY="80dp" />
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewOverallScoresTitle" />
 
                     <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="105dp"
-                        android:layout_height="74dp"
+                        android:id="@+id/textViewGame2Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/bungee"
                         android:text="Game 2"
                         android:textAlignment="center"
-                        android:textSize="24sp"
-                        android:translationX="450dp"
-                        android:translationY="80dp" />
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/textViewGame1Title"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewOverallScoresTitle" />
 
                     <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="138dp"
-                        android:layout_height="74dp"
+                        android:id="@+id/textViewGame3Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/bungee"
                         android:text="Game 3"
                         android:textAlignment="center"
-                        android:textSize="24sp"
-                        android:translationX="650dp"
-                        android:translationY="80dp" />
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/textViewGame2Title"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewOverallScoresTitle" />
 
+                    <!-- TextViews for Game Scores Values -->
                     <TextView
-                        android:id="@+id/textView18"
-                        android:layout_width="56dp"
-                        android:layout_height="44dp"
+                        android:id="@+id/textViewGame1Score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/chewy"
                         android:text="61 %"
-                        android:textColor="#9C000000"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:translationX="275dp"
-                        android:translationY="160dp" />
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewGame1Title"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewGame1Title" />
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/textViewGame2Score"
                         android:layout_width="wrap_content"
-                        android:layout_height="44dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/chewy"
                         android:text="85 %"
-                        android:textColor="#9C000000"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:translationX="479dp"
-                        android:translationY="160dp" />
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewGame2Title"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewGame2Title" />
 
                     <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="56dp"
-                        android:layout_height="44dp"
+                        android:id="@+id/textViewGame3Score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/chewy"
                         android:text="95 %"
-                        android:textColor="#9C000000"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:translationX="695dp"
-                        android:translationY="160dp" />
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewGame3Title"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewGame3Title" />
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="1077dp"
-                    android:layout_height="67dp"
-                    android:layout_marginStart="56dp"
-                    android:fontFamily="@font/bungee_inline"
-                    android:shadowColor="@color/pink"
-                    android:shadowDx="-20"
-                    android:shadowDy="-2"
-                    android:shadowRadius="20"
-                    android:text="Student's Overall Progress"
-                    android:textAlignment="center"
-                    android:textColor="@color/purple"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="26dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/bungee_inline"
-                    android:shadowColor="@color/pink"
-                    android:shadowDx="-20"
-                    android:shadowDy="-2"
-                    android:shadowRadius="20"
-                    android:text="Games Scores"
-                    android:textAlignment="center"
-                    android:textColor="@color/purple"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/gameScoreChart"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/overallScores" />
+            <!-- Container for Game Scores Chart -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
 
+                <!-- CardView for Game Scores Chart -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/gameScoreChart"
-                    android:layout_width="1029dp"
+                    android:id="@+id/cardViewGameScoresChart"
+                    android:layout_width="0dp"
                     android:layout_height="474dp"
-                    android:layout_marginStart="94dp"
-                    android:layout_marginTop="396dp"
-                    android:layout_marginEnd="94dp"
-                    app:cardElevation="20dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8">
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewOverallScores">
 
+                    <!-- Placeholder for Chart (if any) -->
                     <FrameLayout
                         android:id="@+id/chart_container"
                         android:layout_width="match_parent"
@@ -268,25 +263,23 @@
 
                 </androidx.cardview.widget.CardView>
 
-
-
-
-                <TextView
-                    android:id="@+id/studentName"
-                    android:layout_width="333dp"
-                    android:layout_height="49dp"
-                    android:fontFamily="@font/bungee"
-                    android:text="Sami Abdallah"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toTopOf="@+id/overallScores"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8"
-                    app:layout_constraintVertical_bias="0.0" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- TextView for Student Name -->
+            <TextView
+                android:id="@+id/textViewStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/bungee"
+                android:text="Sami Abdallah"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOverallScores" />
+
         </LinearLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

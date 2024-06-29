@@ -1,8 +1,10 @@
 package com.example.sd2
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -15,7 +17,6 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
-
 
 class ProgressReport : AppCompatActivity() {
 
@@ -31,6 +32,13 @@ class ProgressReport : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress_report)
+
+        val imageButton7 = findViewById<ImageButton>(R.id.home_button)
+
+        imageButton7.setOnClickListener {
+            val intent = Intent(this, CTDashboard::class.java)
+            startActivity(intent)
+        }
 
         val userId = getUserIdFromIntent()
         if (userId != -1) {
@@ -65,7 +73,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchProgressData(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.0.192/seniordes/progCalc.php")
+                val url = URL("http://192.168.56.1/seniordes/progCalc.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -147,13 +155,15 @@ class ProgressReport : AppCompatActivity() {
                         } else {
                             // Iterate over game IDs and update text views accordingly
                             val gameIds = listOf(1, 2, 3) // Assuming game IDs 1, 2, 3
+                            val totalQuestions = mapOf(1 to 12, 2 to 12, 3 to 2) // Total questions for each game
                             runOnUiThread {
                                 gameIds.forEach { gameId ->
                                     val gameData = jsonObject.optJSONObject("$gameId")
-                                    val totalWrongAnswers = gameData?.optInt("totalWrongAnswers", 0)
-                                    val totalTimeTaken = gameData?.optString("totalTimeTaken", "00:00:00")
+                                    val totalWrongAnswers = gameData?.optInt("totalWrongAnswers", 0) ?: 0
+                                    val totalCorrectAnswers = if (gameData != null) (totalQuestions[gameId] ?: 0) - totalWrongAnswers else 0
+                                    val totalTimeTaken = gameData?.optString("totalTimeTaken", "00:00:00") ?: "00:00:00"
                                     val formattedTime = formatTime(totalTimeTaken)
-                                    updateTextViews(gameId, totalWrongAnswers ?: 0, formattedTime)
+                                    updateTextViews(gameId, totalCorrectAnswers, formattedTime)
                                 }
                             }
                         }
@@ -183,30 +193,28 @@ class ProgressReport : AppCompatActivity() {
         return "00:00" // Return default if time format is invalid
     }
 
-
-
-    private fun updateTextViews(gameId: Int, totalWrongAnswers: Int, totalTimeTaken: String) {
-        val textViewWrongAnswers = findViewById<TextView>(getTextViewId(gameId, "wrongAnswers"))
+    private fun updateTextViews(gameId: Int, totalCorrectAnswers: Int, totalTimeTaken: String) {
+        val textViewCorrectAnswers = findViewById<TextView>(getTextViewId(gameId, "correctAnswers"))
         val textViewTimeTaken = findViewById<TextView>(getTextViewId(gameId, "timeTaken"))
 
-        textViewWrongAnswers.text = "$totalWrongAnswers"
+        textViewCorrectAnswers.text = "$totalCorrectAnswers"
         textViewTimeTaken.text = "$totalTimeTaken"
     }
 
     private fun getTextViewId(gameId: Int, dataType: String): Int {
         return when (gameId) {
             1 -> when (dataType) {
-                "wrongAnswers" -> R.id.game01WrongAnswers
+                "correctAnswers" -> R.id.game01CorrectAnswers
                 "timeTaken" -> R.id.game01TimeTaken
                 else -> throw IllegalArgumentException("Invalid data type")
             }
             2 -> when (dataType) {
-                "wrongAnswers" -> R.id.game02WrongAnswers
+                "correctAnswers" -> R.id.game02CorrectAnswers
                 "timeTaken" -> R.id.game02TimeTaken
                 else -> throw IllegalArgumentException("Invalid data type")
             }
             3 -> when (dataType) {
-                "wrongAnswers" -> R.id.game03WrongAnswers
+                "correctAnswers" -> R.id.game03CorrectAnswers
                 "timeTaken" -> R.id.game03TimeTaken
                 else -> throw IllegalArgumentException("Invalid data type")
             }

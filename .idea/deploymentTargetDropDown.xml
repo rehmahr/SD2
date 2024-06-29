@@ -5,17 +5,30 @@
       <entry key="CTDash2">
         <State />
       </entry>
-      <entry key="Dashboard">
+      <entry key="CTDashboard">
         <State />
       </entry>
-      <entry key="ProgChart">
+      <entry key="Game2Lev0">
         <State />
       </entry>
-      <entry key="ProgressChart2 (1)">
+      <entry key="Game3Lev1">
         <State />
       </entry>
       <entry key="homepage">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\mayad\.android\avd\Copy_of_Pixel_Tablet_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-06-14T07:38:32.639686900Z" />
+        </State>
       </entry>
     </value>
   </component>

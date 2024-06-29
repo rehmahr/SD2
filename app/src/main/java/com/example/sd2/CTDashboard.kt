@@ -4,13 +4,16 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import okhttp3.*
-import org.json.JSONArray
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 import java.net.URL
@@ -23,6 +26,8 @@ class CTDashboard : AppCompatActivity() {
         // Fetch students data from PHP endpoint
         fetchStudentsData()
     }
+
+
 
     private fun fetchStudentsData() {
         val client = OkHttpClient()
@@ -83,7 +88,7 @@ class CTDashboard : AppCompatActivity() {
     }
 
     private fun goToProgressReport(userId: Int) {
-        val intent = Intent(this, ProgChart::class.java)
+        val intent = Intent(this, ProgressReport::class.java)
         intent.putExtra("USER_ID", userId)
         startActivity(intent)
     }
@@ -139,7 +144,6 @@ class CTDashboard : AppCompatActivity() {
 
         tableLayout.addView(row)
         tableLayout.addView(separatorRow)
-
     }
 
 }

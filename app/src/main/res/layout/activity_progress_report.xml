@@ -116,7 +116,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1150dp">
+                android:layout_height="2038dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/game01"
@@ -131,7 +131,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="694dp"
                         android:layout_height="match_parent">
 
                         <androidx.cardview.widget.CardView
@@ -150,20 +150,34 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
+                                <!--
+                                <TextView
+                                    android:id="@+id/game01averageScore"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Average Score: "
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                                    -->
+
                                 <TextView
                                     android:id="@+id/textView12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="34dp"
-                                    android:layout_marginTop="25dp"
-                                    android:text="Wrong Answers"
+                                    android:layout_marginStart="40dp"
+                                    android:layout_marginTop="28dp"
+                                    android:text="Average Score"
                                     android:textSize="30sp"
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/game01WrongAnswers"
+                                    android:id="@+id/game01CorrectAnswers"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="106dp"
@@ -303,16 +317,16 @@
                                     android:id="@+id/textView37"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="34dp"
-                                    android:layout_marginTop="25dp"
-                                    android:text="Wrong Answers"
+                                    android:layout_marginStart="52dp"
+                                    android:layout_marginTop="28dp"
+                                    android:text="Average Score"
                                     android:textSize="30sp"
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/game02WrongAnswers"
+                                    android:id="@+id/game02CorrectAnswers"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="106dp"
@@ -322,6 +336,19 @@
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                                <!--
+                                <TextView
+                                    android:id="@+id/game02averageScore"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Average Score: "
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" /> -->
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -361,20 +388,33 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
+                                <!--
+                                <TextView
+                                    android:id="@+id/game03averageScore"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Average Score: "
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" /> -->
+
                                 <TextView
                                     android:id="@+id/textView35"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="34dp"
-                                    android:layout_marginTop="25dp"
-                                    android:text="Wrong Answers"
+                                    android:layout_marginStart="40dp"
+                                    android:layout_marginTop="36dp"
+                                    android:text="Average Scores"
                                     android:textSize="30sp"
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/game03WrongAnswers"
+                                    android:id="@+id/game03CorrectAnswers"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="106dp"
@@ -514,6 +554,38 @@
                     android:text="Disable"
                     app:layout_constraintStart_toEndOf="@+id/overallScores"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="@font/bungee_shade"
+                    android:shadowColor="@color/pink"
+                    android:shadowDx="-20"
+                    android:shadowDy="-2"
+                    android:shadowRadius="20"
+                    android:text="Game progress Chart"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/overallScores" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="1103dp"
+                    android:layout_height="714dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
