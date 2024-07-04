@@ -87,4 +87,5 @@ dependencies {
 
     // Add MPAndroidChart dependency
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }
