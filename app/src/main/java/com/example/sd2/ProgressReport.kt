@@ -1,6 +1,8 @@
 package com.example.sd2
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -12,9 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -376,9 +381,54 @@ class ProgressReport : AppCompatActivity() {
             BarEntry(6f, emotionAverages.avg_surprise.toFloat())
         )
 
-        val dataSet = BarDataSet(entries, "Emotion Averages")
+        val dataSet = BarDataSet(entries, "Emotion Averages").apply {
+            colors = listOf(
+                Color.RED,         // Angry
+                Color.GREEN,       // Disgust
+                Color.MAGENTA,     // Fear
+                Color.YELLOW,      // Happy
+                Color.LTGRAY,       // Neutral
+                Color.BLUE,        // Sad
+                Color.CYAN         // Surprised
+            )
+            valueTextColor = Color.BLACK
+            valueTextSize = 12f
+            valueTypeface = Typeface.DEFAULT_BOLD
+        }
+
+        // Custom value formatter to display labels
+        dataSet.valueFormatter = object : ValueFormatter() {
+            private val labels = listOf("Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise")
+
+            override fun getBarLabel(barEntry: BarEntry?): String {
+                return barEntry?.x?.toInt()?.let { labels[it] } ?: ""
+            }
+        }
+
         val barData = BarData(dataSet)
         barChart.data = barData
+
+        // Set the background color to white
+        barChart.setBackgroundColor(Color.WHITE)
+
+        // Disable grid background and lines
+        barChart.setDrawGridBackground(true)
+        barChart.axisLeft.setDrawGridLines(true)
+        barChart.axisRight.setDrawGridLines(true)
+        barChart.xAxis.setDrawGridLines(true)
+
+        val xAxis = barChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.valueFormatter = IndexAxisValueFormatter(
+            listOf("Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise")
+        )
+
+        val yAxisLeft = barChart.axisLeft
+        yAxisLeft.granularity = 1f
+        val yAxisRight = barChart.axisRight
+        yAxisRight.granularity = 1f
+
+        barChart.description.isEnabled = false
         barChart.invalidate()
     }
 
