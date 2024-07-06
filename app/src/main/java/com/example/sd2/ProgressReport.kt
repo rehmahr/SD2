@@ -19,7 +19,6 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -387,22 +386,13 @@ class ProgressReport : AppCompatActivity() {
                 Color.GREEN,       // Disgust
                 Color.MAGENTA,     // Fear
                 Color.YELLOW,      // Happy
-                Color.LTGRAY,       // Neutral
+                Color.LTGRAY,      // Neutral
                 Color.BLUE,        // Sad
                 Color.CYAN         // Surprised
             )
             valueTextColor = Color.BLACK
             valueTextSize = 12f
             valueTypeface = Typeface.DEFAULT_BOLD
-        }
-
-        // Custom value formatter to display labels
-        dataSet.valueFormatter = object : ValueFormatter() {
-            private val labels = listOf("Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise")
-
-            override fun getBarLabel(barEntry: BarEntry?): String {
-                return barEntry?.x?.toInt()?.let { labels[it] } ?: ""
-            }
         }
 
         val barData = BarData(dataSet)
@@ -422,6 +412,9 @@ class ProgressReport : AppCompatActivity() {
         xAxis.valueFormatter = IndexAxisValueFormatter(
             listOf("Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise")
         )
+        xAxis.textColor = Color.BLACK
+        xAxis.textSize = 12f
+        xAxis.typeface = Typeface.DEFAULT_BOLD
 
         val yAxisLeft = barChart.axisLeft
         yAxisLeft.granularity = 1f
