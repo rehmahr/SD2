@@ -143,7 +143,7 @@ class Game2Lev14 : AppCompatActivity() {
                 val gameID = 2 // Assuming gameID for game1 is 1
                 val levelID = 10 // Assuming levelID for level1 is 1
 
-                val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
+                val url = URL("http://192.168.132.103/seniordes/g1l1test.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.doOutput = true
                 urlConnection.requestMethod = "POST"

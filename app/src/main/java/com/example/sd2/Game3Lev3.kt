@@ -1,41 +1,64 @@
 package com.example.sd2
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts.*
 import com.example.sd2.databinding.ActivityGame3Lev3Binding
-import com.google.android.material.snackbar.Snackbar
+import com.example.sd2.facedetector.FaceDetectionActivity
+
+enum class Action {
+    FACE_DETECTION
+}
 
 class Game3Lev3 : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+    private val cameraPermission = android.Manifest.permission.CAMERA
     private lateinit var binding: ActivityGame3Lev3Binding
+    private var action = Action.FACE_DETECTION
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(RequestPermission()) { isGranted ->
+            if (isGranted) {
+                startCamera()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityGame3Lev3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_game3_lev3)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+        binding.buttonFaceDetect.setOnClickListener {
+            this.action = Action.FACE_DETECTION
+            requestCameraAndStart()
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_game3_lev3)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+    private fun requestCameraAndStart() {
+        if (isPermissionGranted(cameraPermission)) {
+            startCamera()
+        } else {
+            requestCameraPermission()
+        }
     }
+
+    private fun startCamera() {
+        when (action) {
+            Action.FACE_DETECTION -> FaceDetectionActivity.startActivity(this)
+        }
+    }
+
+    private fun requestCameraPermission() {
+        when {
+            shouldShowRequestPermissionRationale(cameraPermission) -> {
+                cameraPermissionRequest(
+                    positive = { openPermissionSetting() }
+                )
+            }
+            else -> {
+                requestPermissionLauncher.launch(cameraPermission)
+            }
+        }
+    }
+
 }

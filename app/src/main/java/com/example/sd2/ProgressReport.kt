@@ -103,7 +103,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchProgressData(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.56.1/seniordes/progCalc.php")
+                val url = URL("http://192.168.132.103/seniordes/progCalc.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -159,7 +159,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchAdditionalData(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.56.1/seniordes/progRepGet.php")
+                val url = URL("http://192.168.132.103/seniordes/progRepGet.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -284,7 +284,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchEmotionAverages(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.56.1/seniordes/emotionGet.php")
+                val url = URL("http://192.168.132.103/seniordes/emotionGet.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true

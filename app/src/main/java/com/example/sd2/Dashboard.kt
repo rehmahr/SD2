@@ -66,7 +66,7 @@ class  Dashboard : ComponentActivity() {
     private fun fetchProgressData() {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.56.1/seniordes/progCalc.php")
+                val url = URL("http://192.168.132.103/seniordes/progCalc.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true

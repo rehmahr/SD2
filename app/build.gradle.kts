@@ -82,6 +82,38 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // CAMERA X :)
+    implementation (libs.androidx.camera.core)
+    implementation (libs.androidx.camera.camera2)
+    implementation (libs.androidx.camera.lifecycle)
+    implementation (libs.androidx.camera.video)
+    implementation (libs.androidx.camera.view)
+    implementation (libs.androidx.camera.extensions)
+
+    // face detection :)
+    implementation (libs.androidx.activity.ktx)
+    implementation("com.google.guava:guava:32.0.1-jre")
+    implementation("com.google.android.gms:play-services-mlkit-face-detection:17.1.0")
+
+//    implementation (libs.guava)
+//    implementation (libs.play.services.mlkit.face.detection)
+
+
+    // tensorflow lite :)
+    implementation (libs.tensorflow.lite)
+    implementation (libs.tensorflow.lite.task.vision)
+    implementation (libs.tensorflow.lite.gpu.delegate.plugin)
+    implementation (libs.tensorflow.lite.gpu)
+    implementation (libs.tensorflow.lite.support)
+    implementation (libs.tensorflow.lite.metadata)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+
     // Add OkHttp dependency
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 

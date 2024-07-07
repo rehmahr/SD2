@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
 
     private fun login(username: String, password: String) {
         val client = OkHttpClient()
-        val url = "http://192.168.56.1/seniordes/login.php"
+        val url = "http://192.168.132.103/seniordes/login.php"
         val formBody = FormBody.Builder()
             .add("username", username)
             .add("password", password)
@@ -129,7 +129,7 @@ fun goToNextActivity(context: Context, nextActivityClass: Class<*>) {
 fun saveProgressToDatabase(userID: Int, gameID: Int, levelID: Int, progress: Int) {
     GlobalScope.launch(Dispatchers.IO) {
         try {
-            val url = URL("http://192.168.56.1/seniordes/progressRep.php")
+            val url = URL("http://192.168.132.103/seniordes/progressRep.php")
             val urlConnection = url.openConnection() as HttpURLConnection
             urlConnection.doOutput = true
             urlConnection.requestMethod = "POST"
