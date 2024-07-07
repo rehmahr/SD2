@@ -18,6 +18,14 @@
         android:theme="@style/Theme.SD2"
         tools:targetApi="31">
         <activity
+            android:name=".Game3Lev3"
+            android:exported="false"
+            android:theme="@style/Theme.SD2" />
+        <activity
+            android:name=".ui.theme.Game3Lev3"
+            android:exported="false"
+            android:theme="@style/Theme.SD2" />
+        <activity
             android:name=".ProgChart2"
             android:exported="false"
             android:theme="@style/Theme.SD2" />
@@ -253,9 +261,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts"
             android:usesCleartextTraffic="true" />
-
     </application>
-
-
 
 </manifest>
