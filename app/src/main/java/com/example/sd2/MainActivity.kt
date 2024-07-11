@@ -3,14 +3,11 @@ package com.example.sd2
 
 import android.content.Context
 import android.content.Intent
-import android.os.AsyncTask
-import androidx.activity.ComponentActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -21,13 +18,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import org.json.JSONObject
-import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
-import java.net.URLEncoder
 
 
 //testing github
@@ -60,7 +53,7 @@ class MainActivity : ComponentActivity() {
 
     private fun login(username: String, password: String) {
         val client = OkHttpClient()
-        val url = "http://192.168.132.103/seniordes/login.php"
+        val url = "http://192.168.56.1/seniordes/login.php"
         val formBody = FormBody.Builder()
             .add("username", username)
             .add("password", password)
@@ -129,7 +122,7 @@ fun goToNextActivity(context: Context, nextActivityClass: Class<*>) {
 fun saveProgressToDatabase(userID: Int, gameID: Int, levelID: Int, progress: Int) {
     GlobalScope.launch(Dispatchers.IO) {
         try {
-            val url = URL("http://192.168.132.103/seniordes/progressRep.php")
+            val url = URL("http://192.168.56.1/seniordes/progressRep.php")
             val urlConnection = url.openConnection() as HttpURLConnection
             urlConnection.doOutput = true
             urlConnection.requestMethod = "POST"

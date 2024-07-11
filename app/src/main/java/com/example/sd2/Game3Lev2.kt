@@ -3,7 +3,6 @@ package com.example.sd2
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -92,7 +91,7 @@ class Game3Lev2 : AppCompatActivity() {
                 val gameID = 3 // Assuming gameID for game1 is 1
                 val levelID = 15 // Assuming levelID for level1 is 1
 
-                val url = URL("http://192.168.132.103/seniordes/g1l1test.php")
+                val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.doOutput = true
                 urlConnection.requestMethod = "POST"

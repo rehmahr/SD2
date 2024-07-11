@@ -103,7 +103,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchProgressData(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.132.103/seniordes/progCalc.php")
+                val url = URL("http://192.168.56.1/seniordes/progCalc.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -159,7 +159,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchAdditionalData(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.132.103/seniordes/progRepGet.php")
+                val url = URL("http://192.168.56.1/seniordes/progRepGet.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -284,7 +284,7 @@ class ProgressReport : AppCompatActivity() {
     private fun fetchEmotionAverages(userId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val url = URL("http://192.168.132.103/seniordes/emotionGet.php")
+                val url = URL("http://192.168.56.1/seniordes/emotionGet.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 urlConnection.doOutput = true
@@ -335,16 +335,16 @@ class ProgressReport : AppCompatActivity() {
     private fun parseEmotionAverages(jsonObject: JSONObject): EmotionAverages {
         // Assuming the JSON object has the structure to parse into EmotionAverages
         // Example parsing logic, update based on the actual JSON structure
-        val averageHappiness = jsonObject.getDouble("avg_happy")
-        val averageSadness = jsonObject.getDouble("avg_sad")
-        val averageFear = jsonObject.getDouble("avg_fear")
-        val averageNeutral = jsonObject.getDouble("avg_neutral")
-        val averageDisgust = jsonObject.getDouble("avg_disgust")
         val averageAngry = jsonObject.getDouble("avg_angry")
+        val averageDisgust = jsonObject.getDouble("avg_disgust")
+        val averageFear = jsonObject.getDouble("avg_fear")
+        val averageHappiness = jsonObject.getDouble("avg_happy")
+        val averageNeutral = jsonObject.getDouble("avg_neutral")
+        val averageSadness = jsonObject.getDouble("avg_sad")
         val averageSurprise = jsonObject.getDouble("avg_surprise")
 
         // Add other emotions as needed
-        return EmotionAverages(averageHappiness, averageSadness, averageFear, averageNeutral, averageDisgust, averageAngry, averageSurprise)
+        return EmotionAverages(averageAngry, averageDisgust, averageFear, averageHappiness, averageNeutral, averageSadness, averageSurprise)
     }
         /* val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.56.1/seniordes/emotionGet.php") // replace with your server address

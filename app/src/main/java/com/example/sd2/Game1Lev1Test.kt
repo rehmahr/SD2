@@ -18,8 +18,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.*
-import kotlin.concurrent.schedule
+
 class Game1Lev1Test : AppCompatActivity() {
 
     private var startTime: Long = 0
@@ -180,7 +179,7 @@ class Game1Lev1Test : AppCompatActivity() {
                 val gameID = 1 // Assuming gameID for game1 is 1
                 val levelID = 1 // Assuming levelID for level1 is 1
 
-                val url = URL("http://192.168.132.103/seniordes/g1l1test.php")
+                val url = URL("http://192.168.56.1/seniordes/g1l1test.php")
                 val urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.doOutput = true
                 urlConnection.requestMethod = "POST"
