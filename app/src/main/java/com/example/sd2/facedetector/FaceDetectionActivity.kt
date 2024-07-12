@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import com.example.sd2.CameraXViewModel
+import com.example.sd2.MyApp
 import com.example.sd2.databinding.ActivityFaceDetectionBinding
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
@@ -305,14 +306,14 @@ class FaceDetectionActivity : AppCompatActivity() {
                 urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
 
                 // Prepare POST data
-                val userID = "7" // Hardcoded user ID
+                val userID = (application as MyApp).userID
                 val timeStamp = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
                 val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
                 val prompt = emotions.getOrNull(previousEmotionIndex ?: -1)
 
                 // Construct POST data string
                 val postData = StringBuilder()
-                postData.append("userID=").append(URLEncoder.encode(userID, "UTF-8"))
+                postData.append("userID=").append(userID)
                 postData.append("&time=").append(URLEncoder.encode(timeStamp, "UTF-8"))
                 postData.append("&date=").append(URLEncoder.encode(date, "UTF-8"))
                 postData.append("&prompt=").append(URLEncoder.encode(prompt, "UTF-8"))
