@@ -3,38 +3,47 @@ package com.example.sd2.facedetector
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Matrix
+import android.graphics.Rect
 import android.media.Image
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.*
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageProxy
+import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import com.example.sd2.CameraXViewModel
+import com.example.sd2.Dashboard
+import com.example.sd2.R
 import com.example.sd2.databinding.ActivityFaceDetectionBinding
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetector
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.tensorflow.lite.Interpreter
+import java.io.DataOutputStream
 import java.io.FileInputStream
+import java.net.HttpURLConnection
+import java.net.URL
+import java.net.URLEncoder
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
-import java.util.concurrent.Executors
-import kotlin.math.max
-import kotlin.math.min
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.io.DataOutputStream
+import java.util.concurrent.Executors
+import kotlin.math.max
+import kotlin.math.min
 
 class FaceDetectionActivity : AppCompatActivity() {
 
@@ -68,6 +77,13 @@ class FaceDetectionActivity : AppCompatActivity() {
             processCameraProvider = provider
             bindCameraPreview()
             bindInputAnalyser()
+        }
+
+        val imageButton7 = findViewById<ImageButton>(R.id.home_button)
+
+        imageButton7.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
         }
 
         faceDetector = FaceDetection.getClient()

@@ -45,6 +45,7 @@ class Congratulations : AppCompatActivity() {
             "Game2Lev14" -> "Game2Lev2"
             "Game2Lev2" -> "Game2Lev31"
             "Game3Lev1" -> "Game3Lev2"
+            "Game3Lev2" -> "Game3Lev3"
             else -> ""
         }
     }

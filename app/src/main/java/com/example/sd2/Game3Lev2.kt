@@ -29,6 +29,13 @@ class Game3Lev2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game3_lev2)
 
+        val imageButton7 = findViewById<ImageButton>(R.id.home_button)
+
+        imageButton7.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
+
         val emotions = listOf(
             R.drawable.happy_side, R.drawable.happy_word,
             R.drawable.sad_side, R.drawable.sad_word,
@@ -142,7 +149,7 @@ class Game3Lev2 : AppCompatActivity() {
                 secondCard.isMatched = true
                 matchedPairs++ // Increment matched pairs
                 if (matchedPairs == cards.size / 2) { // Check if all pairs are matched
-                    goToCongratulationsActivity()
+                    goToLev3Activity()
                 }
                 isClickable = true // Allow clicks again
             } else {
@@ -179,8 +186,8 @@ class Game3Lev2 : AppCompatActivity() {
         updateViews()
     }
 
-    private fun goToCongratulationsActivity() {
-        val intent = Intent(this, Congratulations2::class.java)
+    private fun goToLev3Activity() {
+        val intent = Intent(this, Game3Lev3::class.java)
         startActivity(intent)
 
         val progress = 50;

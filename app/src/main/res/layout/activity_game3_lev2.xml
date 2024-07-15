@@ -135,6 +135,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/proceedButton"
+                android:layout_width="130dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="235dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginBottom="297dp"
+                android:backgroundTint="#DF7F99"
+                android:text="Proceed to Test"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageButton
                 android:id="@+id/front_side1"
                 android:layout_width="145dp"
@@ -235,7 +249,7 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/imageView31"
         android:layout_width="124dp"
         android:layout_height="96dp"
         android:layout_marginEnd="8dp"

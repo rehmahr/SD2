@@ -73,7 +73,7 @@ class ProgressReport : AppCompatActivity() {
         if (userId != -1) {
             // Fetch progress data for the specific user
             fetchProgressData(userId)
-            fetchEmotionAverages(userId) // Ensure this is called to fetch and display emotion averages
+            fetchEmotionAverages(userId) // this is called to fetch and display emotion averages
         } else {
             Log.e("ProgressReport", "User ID not found in intent extras")
             showToast("User ID not found")
@@ -134,7 +134,8 @@ class ProgressReport : AppCompatActivity() {
                             val gameIds = listOf(1, 2, 3) // Assuming game IDs 1, 2, 3
                             runOnUiThread {
                                 gameIds.forEach { gameId ->
-                                    val progress = jsonObject.optDouble(gameId.toString(), 0.0).toFloat()
+                                    val progress =
+                                        jsonObject.optDouble(gameId.toString(), 0.0).toFloat()
                                     updateCardView(getCardViewId(gameId), progress)
                                 }
                             }
@@ -183,18 +184,21 @@ class ProgressReport : AppCompatActivity() {
                             Log.e("ProgressReport", "User not found in the table")
                             showToast("User not found")
                         } else {
-                            // Iterate over game IDs and update text views accordingly
+                            // Create a list of BarEntry for the bar chart
+                            val barEntries = mutableListOf<BarEntry>()
                             val gameIds = listOf(1, 2, 3) // Assuming game IDs 1, 2, 3
-                            val totalQuestions = mapOf(1 to 12, 2 to 12, 3 to 2) // Total questions for each game
                             runOnUiThread {
                                 gameIds.forEach { gameId ->
                                     val gameData = jsonObject.optJSONObject("$gameId")
-                                    val totalWrongAnswers = gameData?.optInt("totalWrongAnswers", 0) ?: 0
-                                    val totalCorrectAnswers = if (gameData != null) (totalQuestions[gameId] ?: 0) - totalWrongAnswers else 0
-                                    val totalTimeTaken = gameData?.optString("totalTimeTaken", "00:00:00") ?: "00:00:00"
-                                    val formattedTime = formatTime(totalTimeTaken)
-                                    updateTextViews(gameId, totalCorrectAnswers, formattedTime)
+                                    if (gameData != null) {
+                                        val average = gameData.optInt("average", 0).toFloat()
+                                        barEntries.add(BarEntry(gameId.toFloat(), average))
+                                        val timeTaken = gameData.optString("totalTimeTaken", "00:00:00")
+                                        val formattedTime = formatTime(timeTaken)
+                                        updateTextViews(gameId, average.toInt(), formattedTime)
+                                    }
                                 }
+                                displayBarChart(barEntries)
                             }
                         }
                     } else {
@@ -212,6 +216,73 @@ class ProgressReport : AppCompatActivity() {
         }
     }
 
+
+    private fun displayBarChart(barEntries: List<BarEntry>) {
+        val barChart = findViewById<BarChart>(R.id.barChart2)
+
+        val dataSet = BarDataSet(barEntries, "Game Scores").apply {
+            colors = listOf(
+                Color.CYAN,   // Game 1
+                Color.MAGENTA, // Game 2
+                Color.RED   // Game 3
+            )
+            valueTextColor = Color.BLACK
+            valueTextSize = 12f
+            valueTypeface = Typeface.DEFAULT_BOLD
+        }
+
+        val barData = BarData(dataSet)
+        barChart.data = barData
+
+        // Set the background color to white
+        barChart.setBackgroundColor(Color.WHITE)
+
+        // Disable grid background and lines
+        barChart.setDrawGridBackground(true)
+        barChart.axisLeft.setDrawGridLines(true)
+        barChart.axisRight.setDrawGridLines(true)
+        barChart.xAxis.setDrawGridLines(true)
+
+        val xAxis = barChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.valueFormatter = IndexAxisValueFormatter(
+            listOf("Game 3", "Game 1", "Game 2")
+        )
+        xAxis.textColor = Color.BLACK
+        xAxis.textSize = 12f
+        xAxis.typeface = Typeface.DEFAULT_BOLD
+
+        val yAxisLeft = barChart.axisLeft
+        yAxisLeft.granularity = 1f
+        yAxisLeft.axisMinimum = 0f // Set minimum y-axis value to 0
+        val yAxisRight = barChart.axisRight
+        yAxisRight.granularity = 1f
+        yAxisRight.axisMinimum = 0f // Set minimum y-axis value to 0
+
+        barChart.description.isEnabled = false
+        barChart.invalidate() // Refresh the chart
+    }
+
+
+
+
+    //  private fun calculateAverage(gameId: Int, leastWrongAnswers: Int): String {
+    //    val totalQuestions = when (gameId) {
+      //      1 -> 12
+      //      2 -> 12 // Assuming levelID 1 and 2 have 12 questions each
+      //      3 -> 2  // LevelID 3 has 2 questions
+      //      else -> 0
+      //  }
+
+        //return if (totalQuestions > 0) {
+        //    val CorrectAnswers = totalQuestions - leastWrongAnswers
+        //    "$CorrectAnswers/$totalQuestions"
+       // } else {
+        //    "0/0"
+       // }
+   // }
+
+
     private fun formatTime(time: String?): String {
         if (time.isNullOrEmpty()) return "00:00" // Return default if time is null or empty
         val parts = time.split(":")
@@ -223,28 +294,28 @@ class ProgressReport : AppCompatActivity() {
         return "00:00" // Return default if time format is invalid
     }
 
-    private fun updateTextViews(gameId: Int, totalCorrectAnswers: Int, totalTimeTaken: String) {
-        val textViewCorrectAnswers = findViewById<TextView>(getTextViewId(gameId, "correctAnswers"))
+    private fun updateTextViews(gameId: Int, average: Int, timeTaken: String) {
+        val textViewAverage = findViewById<TextView>(getTextViewId(gameId, "average"))
         val textViewTimeTaken = findViewById<TextView>(getTextViewId(gameId, "timeTaken"))
 
-        textViewCorrectAnswers.text = "$totalCorrectAnswers"
-        textViewTimeTaken.text = "$totalTimeTaken"
+        textViewAverage.text = "$average"
+        textViewTimeTaken.text = "$timeTaken"
     }
 
     private fun getTextViewId(gameId: Int, dataType: String): Int {
         return when (gameId) {
             1 -> when (dataType) {
-                "correctAnswers" -> R.id.game01CorrectAnswers
+                "average" -> R.id.game01CorrectAnswers
                 "timeTaken" -> R.id.game01TimeTaken
                 else -> throw IllegalArgumentException("Invalid data type")
             }
             2 -> when (dataType) {
-                "correctAnswers" -> R.id.game02CorrectAnswers
+                "average" -> R.id.game02CorrectAnswers
                 "timeTaken" -> R.id.game02TimeTaken
                 else -> throw IllegalArgumentException("Invalid data type")
             }
             3 -> when (dataType) {
-                "correctAnswers" -> R.id.game03CorrectAnswers
+                "average" -> R.id.game03CorrectAnswers
                 "timeTaken" -> R.id.game03TimeTaken
                 else -> throw IllegalArgumentException("Invalid data type")
             }
@@ -256,7 +327,7 @@ class ProgressReport : AppCompatActivity() {
         return when (gameId) {
             1 -> R.id.game01
             2 -> R.id.game02
-            3 -> R.id.overallScores
+            3 -> R.id.game03
             else -> throw IllegalArgumentException("Invalid game ID")
         }
     }
@@ -273,7 +344,7 @@ class ProgressReport : AppCompatActivity() {
 
     private fun changeCardViewsToGray() {
         val grayColor = ContextCompat.getColor(this, android.R.color.darker_gray)
-        val gameIds = listOf(R.id.game01, R.id.game02, R.id.overallScores) // Assuming game IDs 1, 2, 3
+        val gameIds = listOf(R.id.game01, R.id.game02, R.id.game03) // Assuming game IDs 1, 2, 3
         runOnUiThread {
             gameIds.forEach { gameId ->
                 findViewById<CardView>(gameId)?.setCardBackgroundColor(grayColor)
@@ -418,8 +489,10 @@ class ProgressReport : AppCompatActivity() {
 
         val yAxisLeft = barChart.axisLeft
         yAxisLeft.granularity = 1f
+        yAxisLeft.axisMaximum = 100f // Set maximum y-axis value to 100
         val yAxisRight = barChart.axisRight
         yAxisRight.granularity = 1f
+        yAxisRight.axisMaximum = 100f // Set maximum y-axis value to 100
 
         barChart.description.isEnabled = false
         barChart.invalidate()

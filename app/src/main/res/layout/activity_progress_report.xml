@@ -8,6 +8,8 @@
     android:background="#FED98E"
     tools:context=".ProgressReport">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
         android:layout_width="85dp"
@@ -99,9 +101,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+
+    <!-- _________________________________________________________________________ -->
+                <!-- APPLY ANY CHANGES TO the ProgRep AFTER THIS LINE -->
+    <!-- _________________________________________________________________________ -->
+
     <ScrollView
-        android:layout_width="1188dp"
-        android:layout_height="898dp"
+        android:layout_width="1180dp"
+        android:layout_height="1017dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -116,7 +123,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="1178dp"
-                android:layout_height="2231dp">
+                android:layout_height="3088dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/game01"
@@ -380,7 +387,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/overallScores"
+                    android:id="@+id/game03"
                     android:layout_width="700dp"
                     android:layout_height="250dp"
                     android:layout_marginStart="94dp"
@@ -544,23 +551,6 @@
                     app:layout_constraintBottom_toTopOf="@+id/game02"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/bungee_shade"
-                    android:shadowColor="@color/pink"
-                    android:shadowDx="-20"
-                    android:shadowDy="-2"
-                    android:shadowRadius="20"
-                    android:text="Game 03"
-                    android:textAlignment="center"
-                    android:textColor="@color/purple"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/overallScores"
-                    app:layout_constraintStart_toStartOf="parent" />
-
                 <Button
                     android:id="@+id/disableGame01"
                     android:layout_width="wrap_content"
@@ -581,22 +571,37 @@
                     app:layout_constraintStart_toEndOf="@+id/game02"
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
+
                 <Button
                     android:id="@+id/disableGame03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="44dp"
-                    android:layout_marginTop="107dp"
+                    android:layout_marginTop="102dp"
+                    android:layout_marginEnd="100dp"
                     android:text="Disable"
-                    app:layout_constraintStart_toEndOf="@+id/overallScores"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart2"
+                    android:layout_width="1103dp"
+                    android:layout_height="714dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="64dp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView11"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.666"
+                    app:layout_constraintStart_toStartOf="@id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="44dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="956dp"
                     android:fontFamily="@font/bungee_shade"
                     android:shadowColor="@color/pink"
                     android:shadowDx="-20"
@@ -608,19 +613,57 @@
                     android:textSize="30sp"
                     android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/overallScores" />
+                    app:layout_constraintTop_toBottomOf="@+id/game03" />
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChart"
                     android:layout_width="1103dp"
                     android:layout_height="714dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="281dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintHorizontal_bias="0.511"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="46dp"
+                    android:fontFamily="@font/bungee_shade"
+                    android:shadowColor="@color/pink"
+                    android:shadowDx="-20"
+                    android:shadowDy="-2"
+                    android:shadowRadius="20"
+                    android:text="Games progress Chart"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/game03" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/bungee_shade"
+                    android:shadowColor="@color/pink"
+                    android:shadowDx="-20"
+                    android:shadowDy="-2"
+                    android:shadowRadius="20"
+                    android:text="Game 03"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@+id/game03"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/game02" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

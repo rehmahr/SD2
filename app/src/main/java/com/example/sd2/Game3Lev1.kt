@@ -6,7 +6,7 @@ import android.os.Handler
 import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -50,6 +50,13 @@ class Game3Lev1 : AppCompatActivity() {
         emotionWordTextView = findViewById(R.id.emotionWord)
         faceGap = findViewById(R.id.faceGap)
         matchEmptyFace = findViewById(R.id.matchEmptyFace)
+
+        val imageButton7 = findViewById<ImageButton>(R.id.home_button)
+
+        imageButton7.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
 
         setDragListener(matchEmptyFace)
 

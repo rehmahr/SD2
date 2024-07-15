@@ -87,6 +87,8 @@
         android:textSize="40sp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintEnd_toStartOf="@+id/imageView28"
+        app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -264,7 +266,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/imageView31"
         android:layout_width="124dp"
         android:layout_height="96dp"
         android:layout_marginEnd="44dp"
@@ -302,7 +304,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView20"
+        app:layout_constraintBottom_toTopOf="@+id/imageView31"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:srcCompat="@drawable/star" />
 
