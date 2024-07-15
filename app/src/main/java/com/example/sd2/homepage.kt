@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,5 +27,4 @@ class homepage : AppCompatActivity() {
     }
 }
 
-// 192.168.132.103 Amaal
-// 192.168.56.1 Farah
+// 192.168.132.103
