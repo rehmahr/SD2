@@ -14,14 +14,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -74,6 +79,7 @@ class ProgressReport : AppCompatActivity() {
             // Fetch progress data for the specific user
             fetchProgressData(userId)
             fetchEmotionAverages(userId) // this is called to fetch and display emotion averages
+            fetchCorrectAnswers(userId)
         } else {
             Log.e("ProgressReport", "User ID not found in intent extras")
             showToast("User ID not found")
@@ -184,21 +190,19 @@ class ProgressReport : AppCompatActivity() {
                             Log.e("ProgressReport", "User not found in the table")
                             showToast("User not found")
                         } else {
-                            // Create a list of BarEntry for the bar chart
-                            val barEntries = mutableListOf<BarEntry>()
+                            // Iterate over game IDs and update text views accordingly
                             val gameIds = listOf(1, 2, 3) // Assuming game IDs 1, 2, 3
                             runOnUiThread {
                                 gameIds.forEach { gameId ->
                                     val gameData = jsonObject.optJSONObject("$gameId")
                                     if (gameData != null) {
-                                        val average = gameData.optInt("average", 0).toFloat()
-                                        barEntries.add(BarEntry(gameId.toFloat(), average))
-                                        val timeTaken = gameData.optString("totalTimeTaken", "00:00:00")
-                                        val formattedTime = formatTime(timeTaken)
-                                        updateTextViews(gameId, average.toInt(), formattedTime)
+                                        val average = gameData.optInt("average", 0)
+                                        val totalTimeTaken = gameData.optString("totalTimeTaken", "00:00:00")
+                                        val formattedTime = formatTime(totalTimeTaken)
+                                        updateTextViews(gameId, average, formattedTime)
                                     }
+
                                 }
-                                displayBarChart(barEntries)
                             }
                         }
                     } else {
@@ -216,52 +220,68 @@ class ProgressReport : AppCompatActivity() {
         }
     }
 
+    private fun fetchCorrectAnswers(userId: Int) {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val url = URL("http://192.168.56.1/seniordes/updateCorrectAnswers.php")
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.requestMethod = "GET"
 
-    private fun displayBarChart(barEntries: List<BarEntry>) {
-        val barChart = findViewById<BarChart>(R.id.barChart2)
+                val postData = "userID=$userId"
+                urlConnection.outputStream.write(postData.toByteArray(Charsets.UTF_8))
 
-        val dataSet = BarDataSet(barEntries, "Game Scores").apply {
-            colors = listOf(
-                Color.CYAN,   // Game 1
-                Color.MAGENTA, // Game 2
-                Color.RED   // Game 3
-            )
-            valueTextColor = Color.BLACK
-            valueTextSize = 12f
-            valueTypeface = Typeface.DEFAULT_BOLD
+                val responseCode = urlConnection.responseCode
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    val responseData = urlConnection.inputStream.bufferedReader().readText()
+
+                    if (responseData.isNotEmpty()) {
+                        val jsonArray = JSONArray(responseData)
+                        val dataEntries = mutableListOf<Entry>()
+
+                        for (i in 0 until jsonArray.length()) {
+                            val jsonObject = jsonArray.getJSONObject(i)
+                            val gameID = jsonObject.getInt("gameID").toFloat()
+                            val correctAnswers = jsonObject.getInt("correctAnswers").toFloat()
+                            dataEntries.add(Entry(gameID, correctAnswers))
+                        }
+
+                        runOnUiThread {
+                            displayLineChart(dataEntries)
+                        }
+                    } else {
+                        Log.e("ProgressReport", "Empty response")
+                    }
+                } else {
+                    Log.e("ProgressReport", "HTTP error code: $responseCode")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e("ProgressReport", "Error fetching CorrectAnswers data: ${e.message}")
+            }
         }
-
-        val barData = BarData(dataSet)
-        barChart.data = barData
-
-        // Set the background color to white
-        barChart.setBackgroundColor(Color.WHITE)
-
-        // Disable grid background and lines
-        barChart.setDrawGridBackground(true)
-        barChart.axisLeft.setDrawGridLines(true)
-        barChart.axisRight.setDrawGridLines(true)
-        barChart.xAxis.setDrawGridLines(true)
-
-        val xAxis = barChart.xAxis
-        xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.valueFormatter = IndexAxisValueFormatter(
-            listOf("Game 3", "Game 1", "Game 2")
-        )
-        xAxis.textColor = Color.BLACK
-        xAxis.textSize = 12f
-        xAxis.typeface = Typeface.DEFAULT_BOLD
-
-        val yAxisLeft = barChart.axisLeft
-        yAxisLeft.granularity = 1f
-        yAxisLeft.axisMinimum = 0f // Set minimum y-axis value to 0
-        val yAxisRight = barChart.axisRight
-        yAxisRight.granularity = 1f
-        yAxisRight.axisMinimum = 0f // Set minimum y-axis value to 0
-
-        barChart.description.isEnabled = false
-        barChart.invalidate() // Refresh the chart
     }
+
+    private fun displayLineChart(dataEntries: List<Entry>) {
+        val lineChart = findViewById<LineChart>(R.id.lineChart)
+        val lineDataSet = LineDataSet(dataEntries, "Correct Answers")
+        lineDataSet.color = Color.BLUE
+        lineDataSet.valueTextColor = Color.BLACK
+        lineDataSet.valueTextSize = 12f
+        lineDataSet.setDrawCircles(true)
+        lineDataSet.circleColors = listOf(Color.RED)
+
+        val lineData = LineData(lineDataSet)
+        lineChart.data = lineData
+        lineChart.description.isEnabled = false
+        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        lineChart.axisLeft.axisMinimum = 0f
+        lineChart.axisRight.isEnabled = false
+        lineChart.invalidate() // Refresh the chart
+    }
+
+
+
+
 
 
 
